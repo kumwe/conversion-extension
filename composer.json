@@ -7,7 +7,7 @@
   "require": {
     "php": "^8.5",
     "kumwe/contribution": "0.1.0",
-    "kumwe/conversion": "0.1.2"
+    "kumwe/conversion": "dev-main"
   },
   "require-dev": {
     "phpstan/phpstan": "^2.1",
@@ -44,7 +44,7 @@
   "config": {
     "sort-packages": true
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "archive": {
     "exclude": [
