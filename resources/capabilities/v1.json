@@ -1,15 +1,29 @@
 {
-  "schema": "kumwe-capabilities/v1",
-  "package": "kumwe/conversion-extension",
-  "capabilities": [
-    {
-      "id": "conversion.money-provider.declaration",
-      "description": "Bounded canonical currency claim and pair eligibility predicate."
-    },
-    {
-      "id": "conversion.unit-provider.declaration",
-      "description": "Bounded canonical unit claim and pair eligibility predicate."
-    }
-  ],
-  "authority": "No trust, authorization, activation, persistence or rendering authority."
+    "schema": "kumwe-package-capabilities/v1",
+    "package": "kumwe/conversion-extension",
+    "release": "0.1.1",
+    "namespace": "Kumwe\\Conversion\\Contribution\\",
+    "responsibility": "Typed money-rate and unit-conversion provider contribution definitions.",
+    "non_responsibilities": [
+        "Host trust, final authorization and active generation selection",
+        "Persistence, durable transactions, transport and worker lifecycle"
+    ],
+    "capabilities": [
+        {
+            "id": "conversion-extension.portable",
+            "title": "Typed money-rate and unit-conversion provider contribution definitions.",
+            "description": "Canonical portable declarations, behavior and explicit construction; the host retains operational authority.",
+            "symbols": [
+                "Kumwe\\Conversion\\Contribution\\MoneyRateProviderDefinition",
+                "Kumwe\\Conversion\\Contribution\\UnitConversionProviderDefinition"
+            ],
+            "documentation": [
+                "docs/public-api.md",
+                "docs/architecture.md",
+                "docs/integration.md"
+            ]
+        }
+    ],
+    "native_requirements": null,
+    "deprecations": []
 }

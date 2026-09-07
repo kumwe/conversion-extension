@@ -30,5 +30,5 @@ foreach (glob($root . '/src/*.php') as $path) {
 sort($actual);
 if ($actual !== $expected) { throw new RuntimeException('Source closure differs from migration map.'); }
 $services = json_decode(file_get_contents($root . '/resources/service-map/v1.json'), true, 512, JSON_THROW_ON_ERROR);
-if ($services['services'] !== [] || $services['providers'] !== []) { throw new RuntimeException('Pure declarations must not export container services.'); }
+if ($services['factories'] !== [] || $services['config_provider'] !== null) { throw new RuntimeException('Pure declarations must not export container services.'); }
 echo count($actual) . " types; source closure and dependency boundary verified.\n";

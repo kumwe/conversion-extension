@@ -36,8 +36,8 @@ foreach (glob($root . '/src/*.php') as $path) {
     $types[$name] = ['kind' => $type->isEnum() ? 'enum' : ($type->isInterface() ? 'interface' : 'class'), 'final' => $type->isFinal(), 'readonly' => $type->isReadOnly(), 'interfaces' => $interfaces, 'constants' => $constants, 'properties' => $properties, 'methods' => $methods];
 }
 ksort($types);
-$json = json_encode(['schema' => 'kumwe-public-api/v1', 'package' => $composer['name'], 'types' => $types], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n";
-$file = $root . '/resources/public-api/v1.json';
-if (in_array('--write', $argv, true)) { file_put_contents($file, $json); }
-elseif (!is_file($file) || file_get_contents($file) !== $json) { throw new RuntimeException('Public API drift: review compatibility and run composer api:record.'); }
+require __DIR__.'/manifest-profile.php';
+$profile=packageProfile($types,$composer,$root);
+$documents=['resources/public-api/v1.json'=>$profile,'resources/public-api/details.json'=>$types]+packageSupportProfiles($profile,$composer);
+foreach($documents as $path=>$data){$bytes=json_encode($data,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES|JSON_THROW_ON_ERROR)."\n";if(in_array('--write',$argv,true))file_put_contents($root.'/'.$path,$bytes);elseif(!is_file($root.'/'.$path)||file_get_contents($root.'/'.$path)!==$bytes)throw new RuntimeException('Manifest drift: '.$path);}
 echo count($types) . " public types verified.\n";

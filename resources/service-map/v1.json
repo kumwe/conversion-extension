@@ -1,7 +1,11 @@
 {
-  "schema": "kumwe-service-map/v1",
-  "package": "kumwe/conversion-extension",
-  "services": [],
-  "providers": [],
-  "reason": "Immutable declarations and directly constructible deterministic conformance objects; host registrars and authority remain outside the package."
+    "schema": "kumwe-package-service-map/v1",
+    "package": "kumwe/conversion-extension",
+    "release": "0.1.1",
+    "config_provider": null,
+    "provider_absence_reason": "Immutable declarations and stateless helpers use direct construction; no injected runtime service is exported.",
+    "factories": [],
+    "aliases": {},
+    "delegators": [],
+    "configuration_keys": []
 }

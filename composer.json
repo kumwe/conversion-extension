@@ -31,6 +31,7 @@
     "clean-consumer": "@php tools/clean-consumer.php",
     "check": [
       "@composer:validate",
+      "@governance",
       "@lint",
       "@api",
       "@architecture",
@@ -48,7 +49,8 @@
       "bash tools/test-release-integrity.sh",
       "bash tools/test-release-on-record.sh",
       "bash tools/test-package-dependencies.sh"
-    ]
+    ],
+    "governance": "@php tools/verify-governed-manifests.php"
   },
   "config": {
     "sort-packages": true
