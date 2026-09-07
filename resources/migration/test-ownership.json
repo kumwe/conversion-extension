@@ -1,0 +1,25 @@
+{
+  "schema": "kumwe-test-ownership/v1",
+  "source_commit": "24ecf956423c18933e824b43cea1bfb9127a79a9",
+  "package_tests": [
+    {
+      "path": "tests/run.php",
+      "behavior": "Strict declaration parsing, bounds, normalization, serialization and canonical dependency contracts; closed currency/unit request eligibility in both directions."
+    }
+  ],
+  "source_behavior_inputs": [
+    {
+      "path": "tests/Unit/Extension/Contribution/UnitConversionProviderDeclarationTest.php",
+      "sha256": "d3e0076120d84ebb527aeace9f65e25e4955371bca540f4a750c64571a5a26b1"
+    },
+    {
+      "path": "tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php",
+      "sha256": "fcb38ca5a6e27667492c4ba08eb7a84237dc2961ba22496b4786671015448326"
+    }
+  ],
+  "retained_host_tests": [
+    "tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php",
+    "tests/Unit/BusinessRecord/Application/UnitConversionProviderContributionTest.php"
+  ],
+  "phase_2_note": "App is unchanged during Phase 1. Separate portable implementation assertions from mixed host tests and remove only those assertions after verified package adoption. Registry lifecycle and graphical parity portions remain host tests."
+}

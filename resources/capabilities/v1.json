@@ -1,0 +1,15 @@
+{
+  "schema": "kumwe-capabilities/v1",
+  "package": "kumwe/conversion-extension",
+  "capabilities": [
+    {
+      "id": "conversion.money-provider.declaration",
+      "description": "Bounded canonical currency claim and pair eligibility predicate."
+    },
+    {
+      "id": "conversion.unit-provider.declaration",
+      "description": "Bounded canonical unit claim and pair eligibility predicate."
+    }
+  ],
+  "authority": "No trust, authorization, activation, persistence or rendering authority."
+}

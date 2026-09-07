@@ -1,0 +1,7 @@
+{
+  "schema": "kumwe-service-map/v1",
+  "package": "kumwe/conversion-extension",
+  "services": [],
+  "providers": [],
+  "reason": "Immutable declarations and directly constructible deterministic conformance objects; host registrars and authority remain outside the package."
+}

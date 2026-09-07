@@ -1,0 +1,62 @@
+{
+  "name": "kumwe/conversion-extension",
+  "description": "Typed money-rate and unit-conversion provider contribution definitions.",
+  "type": "library",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/kumwe/conversion-extension",
+  "require": {
+    "php": "^8.5",
+    "kumwe/contribution": "0.1.0",
+    "kumwe/conversion": "0.1.2"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^2.1",
+    "squizlabs/php_codesniffer": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kumwe\\Conversion\\Contribution\\": "src/"
+    }
+  },
+  "scripts": {
+    "lint": "@php tools/lint.php",
+    "test": "@php tests/run.php",
+    "api": "@php tools/public-api.php",
+    "api:record": "@php tools/public-api.php --write",
+    "architecture": "@php tools/architecture.php",
+    "examples": "@php examples/consumer.php",
+    "analyse": "phpstan analyse --no-progress",
+    "cs": "phpcs -q",
+    "security": "composer audit --abandoned=fail",
+    "clean-consumer": "@php tools/clean-consumer.php",
+    "check": [
+      "@lint",
+      "@api",
+      "@architecture",
+      "@analyse",
+      "@cs",
+      "@test",
+      "@examples",
+      "@security",
+      "@clean-consumer"
+    ]
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "archive": {
+    "exclude": [
+      "/.git",
+      "/.github",
+      "/vendor",
+      "/composer.lock",
+      "/tests",
+      "/tools",
+      "/phpstan.neon",
+      "/phpcs.xml",
+      "/.phpstan-cache"
+    ]
+  }
+}
