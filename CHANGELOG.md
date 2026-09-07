@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- Enforce bounded list/string invariants consistently in direct provider constructors and manifest decoding.
+- Reconcile withdrawn registrar guidance with the current signed-manifest and ExtensionBindingRegistrar ownership.
+- Preserve exact published Conversion and Contribution dependencies and package-owned tests.
+
 ## 0.1.0
 
 - Install exact released Contribution 0.1.1 and Conversion 0.1.3 dependencies.

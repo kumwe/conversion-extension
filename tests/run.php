@@ -41,6 +41,7 @@ foreach ([MoneyRateProviderDefinition::class => ['currencies', ['USD', 'EUR'], [
     refuses(fn () => $class::fromArray($document + ['extra' => true]));
     foreach (['provider_id' => 12, $key => 'not-a-list', 'priority' => '0'] as $member => $value) { $invalid = $document; $invalid[$member] = $value; refuses(fn () => $class::fromArray($invalid)); }
     foreach ([['name' => $values[0]], [$values[0], 12], [[$values[0]]], [null], [new stdClass()]] as $invalidValues) { $invalid = $document; $invalid[$key] = $invalidValues; refuses(fn () => $class::fromArray($invalid)); }
+    foreach ([['name' => $values[0]], [12], [null], [new stdClass()], [[$values[0]]]] as $invalidValues) { refuses(fn () => new $class('acme.provider.main', $invalidValues)); }
 }
 foreach (['usd', 'US', 'USDD', '', "USD\n"] as $currency) { refuses(fn () => new MoneyRateProviderDefinition('acme.rates', [$currency])); }
 foreach (['metric tonne', '', '-case', 'case!', str_repeat('u', 64)] as $unit) { refuses(fn () => new UnitConversionProviderDefinition('acme.units', [$unit])); }

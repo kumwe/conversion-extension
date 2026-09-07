@@ -63,11 +63,11 @@ final readonly class MoneyRateProviderDefinition implements ContributionDefiniti
         if (preg_match('/^[a-z][a-z0-9]*(?:[._-][a-z0-9]+){1,15}$/D', $providerId) !== 1) {
             throw new InvalidArgumentException('A money rate provider identifier must be namespaced.');
         }
-        if ($currencies === [] || count($currencies) > self::MAXIMUM_CURRENCIES) {
+        if (!array_is_list($currencies) || $currencies === [] || count($currencies) > self::MAXIMUM_CURRENCIES) {
             throw new InvalidArgumentException('A money rate provider must declare between one and 64 currencies.');
         }
         foreach ($currencies as $currency) {
-            if (preg_match('/^[A-Z]{3}$/D', $currency) !== 1) {
+            if (!is_string($currency) || preg_match('/^[A-Z]{3}$/D', $currency) !== 1) {
                 throw new InvalidArgumentException('A money rate provider currency must be an ISO 4217 code.');
             }
         }
