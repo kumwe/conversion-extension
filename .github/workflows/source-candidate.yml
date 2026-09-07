@@ -1,5 +1,7 @@
 name: Source candidate CI
 on:
+  push:
+    branches: ['**']
   pull_request:
   workflow_call:
 permissions:
@@ -7,6 +9,7 @@ permissions:
 jobs:
   source-candidate:
     name: Source candidate gate
+    if: github.event_name != 'push' || github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
@@ -22,7 +25,6 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           repository: kumwe/conversion
-          ref: main
           path: dependencies/conversion
           persist-credentials: false
       - name: Set up PHP
@@ -41,4 +43,4 @@ jobs:
       - name: Record candidate scope
         run: |
           cat ../candidate-dependency-evidence.json
-          echo 'Source verification only; immutable release and adoption gates remain separate.'
+          echo 'Source verification only; publication and independent adoption verification remain separate.'
