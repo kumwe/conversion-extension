@@ -2,7 +2,7 @@
 
 `kumwe/conversion-extension` supplies two immutable contribution definitions under `Kumwe\Conversion\Contribution`: `MoneyRateProviderDefinition` and `UnitConversionProviderDefinition`. They connect Contribution declarations to canonical Conversion requests.
 
-PHP 8.5, `kumwe/contribution` 0.1.0, and `kumwe/conversion` 0.1.2 are the exact intended dependency coordinates. Publication requires independently verified immutable dependency evidence; a local source consumer alone does not provide that evidence.
+PHP 8.5, `kumwe/contribution` 0.1.1, and `kumwe/conversion` 0.1.3 are the required dependency coordinates. The shared package gate installs these released versions and verifies a fresh archive consumer. A human merge triggers the same checks on the resulting default-branch commit and publishes the recorded version.
 
 ```php
 use Kumwe\Conversion\Contribution\MoneyRateProviderDefinition;
@@ -20,4 +20,4 @@ Run `php examples/consumer.php` to exercise both predicates using actual typed C
 
 The two App registrars retain executable provider storage, trusted lifecycle activation, and host authority. This package has no registrar, ConfigProvider, factories, rate tables, conversion algorithms, native extension, PHP fallback, or service locator. “Extension” means a business contribution, not a Zend or PIE extension.
 
-After installing dependencies, run `composer check`. The isolated archive consumer supports explicit local dependency sources for preliminary evidence; publication and App adoption still require separate release verification.
+After installing dependencies, run `composer check`. The isolated archive consumer supports explicit local dependency sources for preliminary evidence; App adoption remains a separate integration task after published artifact verification.

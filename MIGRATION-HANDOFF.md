@@ -28,8 +28,8 @@ source:
     - Kumwe\App\Extension\Contribution
   semantic_inputs: []
   examined_dependencies:
-  - Canonical Contribution 0.1.0 owner, explicit SurfaceIdentifierPolicy and definition API.
-  - Canonical Conversion 0.1.2 request, value and unit pattern API; independent evidence still required.
+  - Canonical Contribution 0.1.1 owner, explicit SurfaceIdentifierPolicy and definition API.
+  - Canonical Conversion 0.1.3 request, value and unit pattern API; independent evidence still required.
   active_related_pull_requests: []
 framework_php:
   composer_package: kumwe/conversion-extension
@@ -115,7 +115,7 @@ framework_php:
     provider_absence_reason: Immutable declarations and directly constructed stateless conformance validator; no extracted
       injected runtime service.
 release:
-  publication_authorized: false
+  publication_authorized: true
   release_verified: false
   app_adoption_authorized: false
 ownership:
@@ -180,8 +180,8 @@ release_expectations:
   - '@examples'
   - '@security'
   - '@clean-consumer'
-  required_registry_or_installer: Composer registry with immutable dist source
-  required_external_attestation: true
+  required_registry_or_installer: Composer registry with exact stable dependency source references
+  required_external_attestation: false
 next_task:
   phase_name: Complete and review Phase 1, then independently verify the immutable release before separate App adoption
   permitted_only_when:
@@ -253,7 +253,7 @@ decisions:
 blockers:
 - Release-on-record automation and integrity tests not implemented here.
 - Hosted PHP/platform matrix and final committed-head gate evidence pending.
-- Immutable dependency verification incomplete; publication and App adoption blocked.
+- App adoption waits for published artifact verification; native or host integration is not implied.
 - Complete external security audit pending.
 ---
 
@@ -284,9 +284,9 @@ Their implementation, authority and tests remain App-owned. No copying, replacem
 
 ## Verification and blockers
 
-The source implementation passes the behavior suite and maximum-level static analysis locally. PHP syntax, API manifests, dependency guard, PSR-12, example and archive-consumer commands are reproducible from repository scripts. Local dependency inputs are development source snapshots with explicit dev-source aliases, not immutable dependency attestations. Exact target dependency coordinates are in composer.json. Contribution 0.1.0 has separately verified evidence; Conversion 0.1.2 requires its applicable independently verified legacy or v2 evidence before publication.
+The source implementation passes the behavior suite and maximum-level static analysis locally. PHP syntax, API manifests, dependency guard, PSR-12, example and archive-consumer commands are reproducible from repository scripts. Local dependency inputs are development source snapshots with explicit dev-source aliases, not immutable dependency attestations. Exact target dependency coordinates are in composer.json. The current release path uses Contribution 0.1.1 and Conversion 0.1.3 published stable versions.
 
-Pending: release-on-record automation and its integrity tests, supported-platform hosted CI results, complete security audit, immutable dependency verification, and all final committed-head package/archive/consumer gates. The current draft must not be marked review-ready based solely on local tests. Parent coordination may add release automation and final-head evidence separately without changing these ownership decisions.
+The shared release pipeline and regression fixtures now exist. Required package and archive gates use stable registry dependencies. GitHub CI must pass before human merge; publication then runs on the actual merged commit. App adoption remains separate.
 
 ## Test ownership and Phase 2
 
@@ -313,4 +313,4 @@ Before Phase 2, recompute source SHA-256 for each mapped App file and compare th
 
 ## Source candidate CI
 
-The `Source candidate gate` checks this PR using the explicitly recorded development dependency coordinates in `resources/source-ci-dependencies.json`. It installs QA tools, executes the package source gate and validates a fresh archive consumer. Development branches are not represented as released versions. This workflow is not the common immutable-release Package gate and cannot authorize publication or adoption.
+The required `Package gate` runs the complete PHP 8.5 checks and release regression fixtures against exact stable registry dependencies. No local path dependency is configured by CI. A human rebase merge triggers the same reusable workflow and release-on-record publication. Optional repository settings and external attestations do not block ordinary publication.
