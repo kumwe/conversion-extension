@@ -64,11 +64,11 @@ final readonly class UnitConversionProviderDefinition implements ContributionDef
         if (preg_match('/^[a-z][a-z0-9]*(?:[._-][a-z0-9]+){1,15}$/D', $providerId) !== 1) {
             throw new InvalidArgumentException('A unit conversion provider identifier must be namespaced.');
         }
-        if ($units === [] || count($units) > self::MAXIMUM_UNITS) {
+        if (!array_is_list($units) || $units === [] || count($units) > self::MAXIMUM_UNITS) {
             throw new InvalidArgumentException('A unit conversion provider must declare between one and 64 units.');
         }
         foreach ($units as $unit) {
-            if (preg_match(UnitConversionFactor::UNIT_PATTERN, $unit) !== 1) {
+            if (!is_string($unit) || preg_match(UnitConversionFactor::UNIT_PATTERN, $unit) !== 1) {
                 throw new InvalidArgumentException(
                     'A unit conversion provider unit must be a bounded portable identifier.',
                 );

@@ -167,7 +167,7 @@ documentation:
   - examples/consumer.php
   changelog_record: CHANGELOG.md#unreleased
 release_expectations:
-  version_policy: SemVer; maintainer chooses first version after review. No release is claimed.
+  version_policy: SemVer; 0.1.0 is published, and CHANGELOG.md records the proposed successor.
   expected_artifact_types:
   - Composer ZIP distribution
   required_checks:
@@ -213,7 +213,7 @@ next_task:
     host portions.
   tests_to_retain_or_add: *id001
   di_or_provisioning_changes:
-  - No package DI provider; preserve App-owned composition and registrar services.
+  - No package DI provider; use the current SDK binding SPI and preserve App-owned trusted composition.
   capability_index_changes:
   - Update App capability index references for moved types without claiming composed roadmap completion.
   changelog_and_evidence_changes:
@@ -247,7 +247,7 @@ governance:
   - NRM-2026-028
   completion_claim: false
 decisions:
-- Two definition types extracted; two registrar types retained in host because they own authority.
+- Two definitions are package-owned; former registrars are withdrawn and their supported replacement is the SDK binding SPI.
 - No aliases, vendor copies, host registrars or empty ConfigProvider.
 - Local source aliases are preliminary development verification only.
 blockers:
@@ -261,30 +261,27 @@ blockers:
 
 # Phase 1 handoff
 
-2 source types extracted; planning count was 4. The two registrar types remain App-owned because their closure stores executable providers and requires trusted active contribution authority.
+The former MoneyRateProviderRegistrar and UnitConversionProviderRegistrar classes are withdrawn in the current App/SDK contract. Providers are declared in signed contributions.integration.rate_providers and contributions.integration.unit_converters manifests, then bound by identifier through Kumwe\Extension\Spi\Binding\ExtensionBindingRegistrar::moneyRateProvider() and ::unitConversionProvider(). Conversion owns the corresponding Provider interfaces; App owns trusted-generation admission and executable storage. Do not recreate the withdrawn registrars.
 
-The draft PR URL is observed, not predicted. No merge, tag, release, source digest for a future commit, artifact publication, or App adoption is claimed. The source map contains one row per extracted symbol with source and target hashes. The public API manifest enumerates all stable methods, parameter names/defaults, return types, readonly properties, enum cases and public constants. Capability and empty service manifests describe the actual extracted runtime.
+The prior v0.1.0 release is published. This readiness successor requires a new reviewed PR and independently verified publication before App adoption. The source map contains one row per extracted symbol with source and target hashes. The public API manifest enumerates all stable methods, parameter names/defaults, return types, readonly properties, enum cases and public constants. Capability and empty service manifests describe the actual extracted runtime.
 
 ## Ownership and dependency decisions
 
-2 source types extracted; planning count was 4. The two registrar types remain App-owned because their closure stores executable providers and requires trusted active contribution authority.
+The former MoneyRateProviderRegistrar and UnitConversionProviderRegistrar classes are withdrawn in the current App/SDK contract. Providers are declared in signed contributions.integration.rate_providers and contributions.integration.unit_converters manifests, then bound by identifier through Kumwe\Extension\Spi\Binding\ExtensionBindingRegistrar::moneyRateProvider() and ::unitConversionProvider(). Conversion owns the corresponding Provider interfaces; App owns trusted-generation admission and executable storage. Do not recreate the withdrawn registrars.
 
 MoneyRateProviderDefinition and UnitConversionProviderDefinition implement the canonical ContributionDefinition interface and accept canonical Conversion request types in their eligibility predicates. Conversion remains the owner of request, exact-decimal, rounding, and unit spelling semantics. Neither definition stores providers, selects providers, admits trust, or activates extensions.
 
-The candidate brief expected registrar extraction and DI providers. Refreshed source closure shows both registrars require App-owned registries/trusted activation. They remain host-owned; inventing an empty provider would misrepresent the extracted runtime. Service and provider lists are intentionally empty and checked by the architecture gate.
+The two immutable provider definitions are this package’s complete current responsibility. Runtime binding uses the existing SDK SPI; this library does not create a second registry or provider container. Service/provider lists remain empty because these values have no injected runtime collaborators.
 
 The production token guard permits only the documented dependency namespaces and rejects host/native/container loading. The source map records exact source commits, paths, source digests, new symbols, target paths, and current target digests. Consumer inventory records file-level migration references without modifying App.
 
-## Retained source files
+## Withdrawn source APIs
 
-- `src/Extension/Contribution/MoneyRateProviderRegistrar.php`
-- `src/Extension/Contribution/UnitConversionProviderRegistrar.php`
-
-Their implementation, authority and tests remain App-owned. No copying, replacement registrar, fallback, or empty DI provider is introduced.
+The former MoneyRateProviderRegistrar and UnitConversionProviderRegistrar classes are withdrawn in the current App/SDK contract. Providers are declared in signed contributions.integration.rate_providers and contributions.integration.unit_converters manifests, then bound by identifier through Kumwe\Extension\Spi\Binding\ExtensionBindingRegistrar::moneyRateProvider() and ::unitConversionProvider(). Conversion owns the corresponding Provider interfaces; App owns trusted-generation admission and executable storage. Do not recreate the withdrawn registrars.
 
 ## Verification and blockers
 
-The source implementation passes the behavior suite and maximum-level static analysis locally. PHP syntax, API manifests, dependency guard, PSR-12, example and archive-consumer commands are reproducible from repository scripts. Local dependency inputs are development source snapshots with explicit dev-source aliases, not immutable dependency attestations. Exact target dependency coordinates are in composer.json. The current release path uses Contribution 0.1.1 and Conversion 0.1.3 published stable versions.
+The source implementation passes the behavior suite and maximum-level static analysis locally. PHP syntax, API manifests, dependency guard, PSR-12, example and archive-consumer commands are reproducible from repository scripts. The package installs exact published dependencies; any explicitly configured local source check remains development evidence. Exact target dependency coordinates are in composer.json. The current release path uses Contribution 0.1.1 and Conversion 0.1.3 published stable versions.
 
 The shared release pipeline and regression fixtures now exist. Required package and archive gates use stable registry dependencies. GitHub CI must pass before human merge; publication then runs on the actual merged commit. App adoption remains separate.
 
@@ -292,7 +289,7 @@ The shared release pipeline and regression fixtures now exist. Required package 
 
 Install an exact independently verified release before changing App. See `resources/migration/source-map.json` for every namespace replacement and `consumer-inventory.json` for the inspected file-level references. Do not add aliases, wrappers, dual PSR-4 roots, or shadow implementations.
 
-Construct either provider definition from code or strict manifest data. Pass actual MoneyConversionRequest or UnitConversionRequest objects to the eligibility predicate before dispatching to host-owned provider implementations. Preserve the original registrar owner checks, collisions, manifest reconciliation, active-generation checks, revocation, recovery behavior, and provider attribution. This package supplies no host registry or runtime factory.
+Construct either provider definition from code or strict manifest data. Pass actual MoneyConversionRequest or UnitConversionRequest objects to the eligibility predicate before dispatching to host-owned provider implementations. Preserve signed-manifest owner checks, binding collisions, reconciliation, active-generation checks, revocation, recovery behavior, and provider attribution through the current SDK SPI. This package supplies no host registry or runtime factory.
 
 In Phase 2, reconcile App changes since the captured baseline, update every affected import and signature to the mapped canonical owner, delete the extracted App definitions, and move only portable implementation assertions out of mixed App tests. Retain host composition and lifecycle assertions listed in `resources/migration/test-ownership.json`. Update the App dependency lock, migration ledger, capability index and changelog; run affected host and integration-train gates. No App files were changed here.
 
@@ -309,7 +306,7 @@ Before Phase 2, recompute source SHA-256 for each mapped App file and compare th
 
 ## Validation recipe and observed local results
 
-`php tests/run.php`, `php tools/lint.php`, `php tools/public-api.php`, `php tools/architecture.php`, PHPStan `analyse --no-progress` at maximum level, and PHP_CodeSniffer with the checked-in PSR-12 configuration are the local package commands. The actual runtime is PHP 8.5.10 NTS. Clean-consumer verification installs the built ZIP with no dev packages and authoritative classmap, then executes the installed example with real dependency types. Its explicit local `dev-source` aliases keep preliminary composition evidence distinct from independent release evidence. The final committed-head tests and published artifact identity remain external verification responsibilities.
+`php tests/run.php`, `php tools/lint.php`, `php tools/public-api.php`, `php tools/architecture.php`, PHPStan `analyse --no-progress` at maximum level, and PHP_CodeSniffer with the checked-in PSR-12 configuration are the local package commands. The actual runtime is PHP 8.5.10 NTS. Clean-consumer verification installs the built ZIP with no dev packages and authoritative classmap, then executes the installed example with real dependency types. The archive consumer verifies the published dependency coordinates recorded in resources/source-ci-dependencies.json. The final committed-head tests and published artifact identity remain external verification responsibilities.
 
 ## Source candidate CI
 

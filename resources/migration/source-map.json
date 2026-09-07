@@ -1,22 +1,22 @@
 [
-  {
-    "old_fqcn": "Kumwe\\App\\BusinessRecord\\Domain\\MoneyRateProviderDefinition",
-    "new_fqcn": "Kumwe\\Conversion\\Contribution\\MoneyRateProviderDefinition",
-    "source_repository": "https://github.com/kumwe/app",
-    "source_commit": "24ecf956423c18933e824b43cea1bfb9127a79a9",
-    "source_path": "src/BusinessRecord/Domain/MoneyRateProviderDefinition.php",
-    "source_sha256": "23e8835d04cc22473b5eb0e9de4a0c96c42322a1958bb1a373e050e12d0112fe",
-    "target_path": "src/MoneyRateProviderDefinition.php",
-    "target_sha256": "1e431e9610ffb61f752edab78cd723e70277d5ab94eda0922bce4dc5cd1355ca"
-  },
-  {
-    "old_fqcn": "Kumwe\\App\\Extension\\Contribution\\UnitConversionProviderDefinition",
-    "new_fqcn": "Kumwe\\Conversion\\Contribution\\UnitConversionProviderDefinition",
-    "source_repository": "https://github.com/kumwe/app",
-    "source_commit": "24ecf956423c18933e824b43cea1bfb9127a79a9",
-    "source_path": "src/Extension/Contribution/UnitConversionProviderDefinition.php",
-    "source_sha256": "0a3150f2d0be368534e9ef6c3975df37b326a54dabac97af113b02c425e6436c",
-    "target_path": "src/UnitConversionProviderDefinition.php",
-    "target_sha256": "1cc1b644d493185dc421bda689ebe25100ec5af7910e5bede49323269dce2488"
-  }
+    {
+        "old_fqcn": "Kumwe\\App\\BusinessRecord\\Domain\\MoneyRateProviderDefinition",
+        "new_fqcn": "Kumwe\\Conversion\\Contribution\\MoneyRateProviderDefinition",
+        "source_repository": "https://github.com/kumwe/app",
+        "source_commit": "24ecf956423c18933e824b43cea1bfb9127a79a9",
+        "source_path": "src/BusinessRecord/Domain/MoneyRateProviderDefinition.php",
+        "source_sha256": "23e8835d04cc22473b5eb0e9de4a0c96c42322a1958bb1a373e050e12d0112fe",
+        "target_path": "src/MoneyRateProviderDefinition.php",
+        "target_sha256": "0ed1e2822c65cac74ef03f0c22600c655d7012f47fe09618529173d2ec127b1e"
+    },
+    {
+        "old_fqcn": "Kumwe\\App\\Extension\\Contribution\\UnitConversionProviderDefinition",
+        "new_fqcn": "Kumwe\\Conversion\\Contribution\\UnitConversionProviderDefinition",
+        "source_repository": "https://github.com/kumwe/app",
+        "source_commit": "24ecf956423c18933e824b43cea1bfb9127a79a9",
+        "source_path": "src/Extension/Contribution/UnitConversionProviderDefinition.php",
+        "source_sha256": "0a3150f2d0be368534e9ef6c3975df37b326a54dabac97af113b02c425e6436c",
+        "target_path": "src/UnitConversionProviderDefinition.php",
+        "target_sha256": "521f118fe38671dce4c7f0faffc9a97dc679ad60656f998d032cc01cd26a42e1"
+    }
 ]
