@@ -1,182 +1,212 @@
 {
-    "schema": "kumwe-public-api/v1",
+    "schema": "kumwe-package-public-api/v1",
     "package": "kumwe/conversion-extension",
-    "types": {
+    "release": "0.1.1",
+    "namespace": "Kumwe\\Conversion\\Contribution\\",
+    "symbols": {
         "Kumwe\\Conversion\\Contribution\\MoneyRateProviderDefinition": {
             "kind": "class",
+            "stability": "stable",
+            "file": "src/MoneyRateProviderDefinition.php",
+            "abstract": false,
             "final": true,
             "readonly": true,
+            "parent": null,
             "interfaces": [
                 "Kumwe\\Contribution\\ContributionDefinition"
             ],
             "constants": {
-                "MAXIMUM_CURRENCIES": 64
+                "MAXIMUM_CURRENCIES": {
+                    "type": null
+                }
             },
             "properties": {
                 "currencies": {
                     "type": "array",
+                    "static": false,
                     "readonly": true
                 }
             },
             "methods": {
                 "__construct": {
+                    "visibility": "public",
                     "static": false,
                     "parameters": [
                         {
                             "name": "providerId",
                             "type": "string",
                             "optional": false,
-                            "by_reference": false,
-                            "variadic": false
+                            "variadic": false,
+                            "by_reference": false
                         },
                         {
                             "name": "currencies",
                             "type": "array",
                             "optional": false,
-                            "by_reference": false,
-                            "variadic": false
+                            "variadic": false,
+                            "by_reference": false
                         },
                         {
                             "name": "priority",
                             "type": "int",
                             "optional": true,
-                            "by_reference": false,
                             "variadic": false,
-                            "default": 0
+                            "by_reference": false
                         }
                     ],
-                    "return": ""
+                    "return": null
                 },
                 "fromArray": {
+                    "visibility": "public",
                     "static": true,
                     "parameters": [
                         {
                             "name": "data",
                             "type": "array",
                             "optional": false,
-                            "by_reference": false,
-                            "variadic": false
+                            "variadic": false,
+                            "by_reference": false
                         }
                     ],
                     "return": "Kumwe\\Conversion\\Contribution\\MoneyRateProviderDefinition"
                 },
                 "identifier": {
+                    "visibility": "public",
                     "static": false,
                     "parameters": [],
                     "return": "string"
                 },
                 "prices": {
+                    "visibility": "public",
                     "static": false,
                     "parameters": [
                         {
                             "name": "request",
                             "type": "Kumwe\\Conversion\\Contract\\MoneyConversionRequest",
                             "optional": false,
-                            "by_reference": false,
-                            "variadic": false
+                            "variadic": false,
+                            "by_reference": false
                         }
                     ],
                     "return": "bool"
                 },
                 "priority": {
+                    "visibility": "public",
                     "static": false,
                     "parameters": [],
                     "return": "int"
                 },
                 "toArray": {
+                    "visibility": "public",
                     "static": false,
                     "parameters": [],
                     "return": "array"
                 }
-            }
+            },
+            "deprecated": null
         },
         "Kumwe\\Conversion\\Contribution\\UnitConversionProviderDefinition": {
             "kind": "class",
+            "stability": "stable",
+            "file": "src/UnitConversionProviderDefinition.php",
+            "abstract": false,
             "final": true,
             "readonly": true,
+            "parent": null,
             "interfaces": [
                 "Kumwe\\Contribution\\ContributionDefinition"
             ],
             "constants": {
-                "MAXIMUM_UNITS": 64
+                "MAXIMUM_UNITS": {
+                    "type": "int"
+                }
             },
             "properties": {
                 "units": {
                     "type": "array",
+                    "static": false,
                     "readonly": true
                 }
             },
             "methods": {
                 "__construct": {
+                    "visibility": "public",
                     "static": false,
                     "parameters": [
                         {
                             "name": "providerId",
                             "type": "string",
                             "optional": false,
-                            "by_reference": false,
-                            "variadic": false
+                            "variadic": false,
+                            "by_reference": false
                         },
                         {
                             "name": "units",
                             "type": "array",
                             "optional": false,
-                            "by_reference": false,
-                            "variadic": false
+                            "variadic": false,
+                            "by_reference": false
                         },
                         {
                             "name": "priority",
                             "type": "int",
                             "optional": true,
-                            "by_reference": false,
                             "variadic": false,
-                            "default": 0
+                            "by_reference": false
                         }
                     ],
-                    "return": ""
+                    "return": null
                 },
                 "fromArray": {
+                    "visibility": "public",
                     "static": true,
                     "parameters": [
                         {
                             "name": "data",
                             "type": "array",
                             "optional": false,
-                            "by_reference": false,
-                            "variadic": false
+                            "variadic": false,
+                            "by_reference": false
                         }
                     ],
                     "return": "Kumwe\\Conversion\\Contribution\\UnitConversionProviderDefinition"
                 },
                 "identifier": {
+                    "visibility": "public",
                     "static": false,
                     "parameters": [],
                     "return": "string"
                 },
                 "priority": {
+                    "visibility": "public",
                     "static": false,
                     "parameters": [],
                     "return": "int"
                 },
                 "relates": {
+                    "visibility": "public",
                     "static": false,
                     "parameters": [
                         {
                             "name": "request",
                             "type": "Kumwe\\Conversion\\Contract\\UnitConversionRequest",
                             "optional": false,
-                            "by_reference": false,
-                            "variadic": false
+                            "variadic": false,
+                            "by_reference": false
                         }
                     ],
                     "return": "bool"
                 },
                 "toArray": {
+                    "visibility": "public",
                     "static": false,
                     "parameters": [],
                     "return": "array"
                 }
-            }
+            },
+            "deprecated": null
         }
-    }
+    },
+    "extension_points": [],
+    "digest_of": "resources/public-api/v1.json"
 }

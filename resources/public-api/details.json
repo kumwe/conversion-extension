@@ -1,0 +1,178 @@
+{
+    "Kumwe\\Conversion\\Contribution\\MoneyRateProviderDefinition": {
+        "kind": "class",
+        "final": true,
+        "readonly": true,
+        "interfaces": [
+            "Kumwe\\Contribution\\ContributionDefinition"
+        ],
+        "constants": {
+            "MAXIMUM_CURRENCIES": 64
+        },
+        "properties": {
+            "currencies": {
+                "type": "array",
+                "readonly": true
+            }
+        },
+        "methods": {
+            "__construct": {
+                "static": false,
+                "parameters": [
+                    {
+                        "name": "providerId",
+                        "type": "string",
+                        "optional": false,
+                        "by_reference": false,
+                        "variadic": false
+                    },
+                    {
+                        "name": "currencies",
+                        "type": "array",
+                        "optional": false,
+                        "by_reference": false,
+                        "variadic": false
+                    },
+                    {
+                        "name": "priority",
+                        "type": "int",
+                        "optional": true,
+                        "by_reference": false,
+                        "variadic": false,
+                        "default": 0
+                    }
+                ],
+                "return": ""
+            },
+            "fromArray": {
+                "static": true,
+                "parameters": [
+                    {
+                        "name": "data",
+                        "type": "array",
+                        "optional": false,
+                        "by_reference": false,
+                        "variadic": false
+                    }
+                ],
+                "return": "Kumwe\\Conversion\\Contribution\\MoneyRateProviderDefinition"
+            },
+            "identifier": {
+                "static": false,
+                "parameters": [],
+                "return": "string"
+            },
+            "prices": {
+                "static": false,
+                "parameters": [
+                    {
+                        "name": "request",
+                        "type": "Kumwe\\Conversion\\Contract\\MoneyConversionRequest",
+                        "optional": false,
+                        "by_reference": false,
+                        "variadic": false
+                    }
+                ],
+                "return": "bool"
+            },
+            "priority": {
+                "static": false,
+                "parameters": [],
+                "return": "int"
+            },
+            "toArray": {
+                "static": false,
+                "parameters": [],
+                "return": "array"
+            }
+        }
+    },
+    "Kumwe\\Conversion\\Contribution\\UnitConversionProviderDefinition": {
+        "kind": "class",
+        "final": true,
+        "readonly": true,
+        "interfaces": [
+            "Kumwe\\Contribution\\ContributionDefinition"
+        ],
+        "constants": {
+            "MAXIMUM_UNITS": 64
+        },
+        "properties": {
+            "units": {
+                "type": "array",
+                "readonly": true
+            }
+        },
+        "methods": {
+            "__construct": {
+                "static": false,
+                "parameters": [
+                    {
+                        "name": "providerId",
+                        "type": "string",
+                        "optional": false,
+                        "by_reference": false,
+                        "variadic": false
+                    },
+                    {
+                        "name": "units",
+                        "type": "array",
+                        "optional": false,
+                        "by_reference": false,
+                        "variadic": false
+                    },
+                    {
+                        "name": "priority",
+                        "type": "int",
+                        "optional": true,
+                        "by_reference": false,
+                        "variadic": false,
+                        "default": 0
+                    }
+                ],
+                "return": ""
+            },
+            "fromArray": {
+                "static": true,
+                "parameters": [
+                    {
+                        "name": "data",
+                        "type": "array",
+                        "optional": false,
+                        "by_reference": false,
+                        "variadic": false
+                    }
+                ],
+                "return": "Kumwe\\Conversion\\Contribution\\UnitConversionProviderDefinition"
+            },
+            "identifier": {
+                "static": false,
+                "parameters": [],
+                "return": "string"
+            },
+            "priority": {
+                "static": false,
+                "parameters": [],
+                "return": "int"
+            },
+            "relates": {
+                "static": false,
+                "parameters": [
+                    {
+                        "name": "request",
+                        "type": "Kumwe\\Conversion\\Contract\\UnitConversionRequest",
+                        "optional": false,
+                        "by_reference": false,
+                        "variadic": false
+                    }
+                ],
+                "return": "bool"
+            },
+            "toArray": {
+                "static": false,
+                "parameters": [],
+                "return": "array"
+            }
+        }
+    }
+}
