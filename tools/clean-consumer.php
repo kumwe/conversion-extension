@@ -27,11 +27,12 @@ foreach ($sourceDependencies as $name => $dependency) {
     if ($path === false || !is_file($path . '/composer.json')) { throw new RuntimeException('Invalid dependency path.'); }
     $metadata = json_decode(file_get_contents($path . '/composer.json'), true, 512, JSON_THROW_ON_ERROR);
     if ($metadata['name'] !== $name) { throw new RuntimeException('Dependency identity mismatch.'); }
-    $repositories[] = ['type' => 'path', 'url' => $path, 'options' => ['symlink' => false, 'versions' => [$name => 'dev-source']]];
-    $require[$name] = 'dev-source as ' . $dependency['satisfies'];
-    $sourceRecords[$name] = ['mode' => 'local-source-alias', 'path' => $path, 'constraint_alias' => $dependency['satisfies'], 'composer_sha256' => hash_file('sha256', $path . '/composer.json')];
+    $version = $dependency['version'] ?? 'dev-source';
+    $repositories[] = ['type' => 'path', 'url' => $path, 'options' => ['symlink' => false, 'versions' => [$name => $version]]];
+    $require[$name] = $dependency['version'] ?? ('dev-source as ' . $dependency['satisfies']);
+    $sourceRecords[$name] = ['mode' => 'local-source-alias', 'path' => $path, 'candidate_coordinate' => $require[$name], 'composer_sha256' => hash_file('sha256', $path . '/composer.json')];
 }
-if ($sourceDependencies !== []) { $repositories[] = ['packagist.org' => false]; }
+if ($sourceDependencies !== [] && !array_any($sourceDependencies, static fn(array $dependency): bool => isset($dependency['version']))) { $repositories[] = ['packagist.org' => false]; }
 $consumer = ['name' => 'kumwe/isolated-consumer', 'require' => $require, 'repositories' => $repositories, 'minimum-stability' => 'dev', 'prefer-stable' => true];
 file_put_contents($temporary . '/composer.json', json_encode($consumer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n");
 $run(['composer', 'install', '--no-dev', '--classmap-authoritative', '--no-scripts', '--no-plugins', '--no-interaction'], $temporary);

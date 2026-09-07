@@ -310,3 +310,7 @@ Before Phase 2, recompute source SHA-256 for each mapped App file and compare th
 ## Validation recipe and observed local results
 
 `php tests/run.php`, `php tools/lint.php`, `php tools/public-api.php`, `php tools/architecture.php`, PHPStan `analyse --no-progress` at maximum level, and PHP_CodeSniffer with the checked-in PSR-12 configuration are the local package commands. The actual runtime is PHP 8.5.10 NTS. Clean-consumer verification installs the built ZIP with no dev packages and authoritative classmap, then executes the installed example with real dependency types. Its explicit local `dev-source` aliases keep preliminary composition evidence distinct from independent release evidence. The final committed-head tests and published artifact identity remain external verification responsibilities.
+
+## Source candidate CI
+
+The `Source candidate gate` checks this PR using the explicitly recorded development dependency coordinates in `resources/source-ci-dependencies.json`. It installs QA tools, executes the package source gate and validates a fresh archive consumer. Development branches are not represented as released versions. This workflow is not the common immutable-release Package gate and cannot authorize publication or adoption.

@@ -1,0 +1,44 @@
+name: Source candidate CI
+on:
+  pull_request:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  source-candidate:
+    name: Source candidate gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: package
+    steps:
+      - name: Check out candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          path: package
+          persist-credentials: false
+      - name: Check out conversion candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: kumwe/conversion
+          ref: main
+          path: dependencies/conversion
+          persist-credentials: false
+      - name: Set up PHP
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+        with:
+          php-version: '8.5'
+          extensions: mbstring, tokenizer, dom, xml, xmlwriter, zip
+          coverage: none
+          tools: composer:v2
+      - name: Install explicit candidate dependency graph
+        run: php tools/install-source-candidate.php
+      - name: Verify original Composer metadata
+        run: composer validate --strict
+      - name: Run package source checks and behavior tests
+        run: composer check
+      - name: Record candidate scope
+        run: |
+          cat ../candidate-dependency-evidence.json
+          echo 'Source verification only; immutable release and adoption gates remain separate.'
