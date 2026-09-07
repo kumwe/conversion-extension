@@ -1,0 +1,67 @@
+{
+  "app": {
+    "source_commit": "24ecf956423c18933e824b43cea1bfb9127a79a9",
+    "files": [
+      {
+        "path": "src/Extension/Contribution/CanonicalManifestInterpreter.php",
+        "sha256": "a24df034a790e9251cad6cb709402c18b6c1c65962ecd74422db935341727bdd",
+        "symbols": [
+          "Kumwe\\App\\BusinessRecord\\Domain\\MoneyRateProviderDefinition"
+        ]
+      },
+      {
+        "path": "src/Extension/Contribution/UnitConversionProviderDefinition.php",
+        "sha256": "0a3150f2d0be368534e9ef6c3975df37b326a54dabac97af113b02c425e6436c",
+        "symbols": [
+          "Kumwe\\App\\Extension\\Contribution\\UnitConversionProviderDefinition"
+        ]
+      },
+      {
+        "path": "src/BusinessRecord/Domain/MoneyRateProviderDefinition.php",
+        "sha256": "23e8835d04cc22473b5eb0e9de4a0c96c42322a1958bb1a373e050e12d0112fe",
+        "symbols": [
+          "Kumwe\\App\\BusinessRecord\\Domain\\MoneyRateProviderDefinition"
+        ]
+      },
+      {
+        "path": "src/BusinessRecord/Infrastructure/RuntimeMoneyRateProviderCatalog.php",
+        "sha256": "fa7bf9f74cd745efbcb2e34644a695e1d0495eef781b199d8c0d42fe27ec4e5a",
+        "symbols": [
+          "Kumwe\\App\\BusinessRecord\\Domain\\MoneyRateProviderDefinition"
+        ]
+      },
+      {
+        "path": "src/BusinessRecord/Infrastructure/RuntimeUnitConversionProviderCatalog.php",
+        "sha256": "27d5913a1115f813264cd77f10e0cc52128943b0a6b71fcdfb5182355aae95e2",
+        "symbols": [
+          "Kumwe\\App\\Extension\\Contribution\\UnitConversionProviderDefinition"
+        ]
+      },
+      {
+        "path": "tests/Unit/Extension/Contribution/UnitConversionProviderDeclarationTest.php",
+        "sha256": "d3e0076120d84ebb527aeace9f65e25e4955371bca540f4a750c64571a5a26b1",
+        "symbols": [
+          "Kumwe\\App\\Extension\\Contribution\\UnitConversionProviderDefinition"
+        ]
+      },
+      {
+        "path": "tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php",
+        "sha256": "fcb38ca5a6e27667492c4ba08eb7a84237dc2961ba22496b4786671015448326",
+        "symbols": [
+          "Kumwe\\App\\BusinessRecord\\Domain\\MoneyRateProviderDefinition"
+        ]
+      },
+      {
+        "path": "tests/Unit/BusinessRecord/Application/UnitConversionProviderContributionTest.php",
+        "sha256": "dc06b92f91cb4c6373357fa6d2737cdb677a0f0d27f6dc9b82a4423a1efc00aa",
+        "symbols": [
+          "Kumwe\\App\\Extension\\Contribution\\UnitConversionProviderDefinition"
+        ]
+      }
+    ]
+  },
+  "extension-sdk": {
+    "source_commit": "e8ec23f155c5836c6bd083f154a8efb6e50aec66",
+    "files": []
+  }
+}
