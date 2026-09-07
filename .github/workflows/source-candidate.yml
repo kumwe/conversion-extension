@@ -1,4 +1,4 @@
-name: Source candidate CI
+name: Conversion Extension CI
 on:
   push:
     branches: ['**']
@@ -7,40 +7,36 @@ on:
 permissions:
   contents: read
 jobs:
-  source-candidate:
-    name: Source candidate gate
+  check:
+    name: PHP 8.5
     if: github.event_name != 'push' || github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    defaults:
-      run:
-        working-directory: package
     steps:
-      - name: Check out candidate
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          path: package
           persist-credentials: false
-      - name: Check out conversion candidate
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          repository: kumwe/conversion
-          path: dependencies/conversion
-          persist-credentials: false
-      - name: Set up PHP
-        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240
         with:
           php-version: '8.5'
           extensions: mbstring, tokenizer, dom, xml, xmlwriter, zip
           coverage: none
           tools: composer:v2
-      - name: Install explicit candidate dependency graph
-        run: php tools/install-source-candidate.php
-      - name: Verify original Composer metadata
-        run: composer validate --strict
-      - name: Run package source checks and behavior tests
+      - name: Install exact released dependencies and package tools
+        run: composer install --no-interaction --prefer-dist
+      - name: Run complete package checks and isolated archive consumer
         run: composer check
-      - name: Record candidate scope
+      - name: Verify production-only installation and example
         run: |
-          cat ../candidate-dependency-evidence.json
-          echo 'Source verification only; publication and independent adoption verification remain separate.'
+          composer install --no-dev --prefer-dist --no-interaction --classmap-authoritative
+          composer examples
+  package-gate:
+    name: Package gate
+    if: always() && (github.event_name != 'push' || github.ref == format('refs/heads/{0}', github.event.repository.default_branch))
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require the complete package and release regression gate
+        env:
+          PACKAGE_RESULT: ${{ needs.check.result }}
+        run: test "$PACKAGE_RESULT" = success

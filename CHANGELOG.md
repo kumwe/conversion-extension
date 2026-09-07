@@ -1,6 +1,9 @@
 # Changelog
 
-## Unreleased
+## 0.1.0
+
+- Install exact released Contribution 0.1.1 and Conversion 0.1.3 dependencies.
+- Publish automatically after the shared package and release regression gate passes on the merged commit.
 
 - Extract 2 portable types into the canonical namespace.
 - Add strict parsing, conformance/eligibility and boundary tests, API/capability/service manifests, complete public API docs, and archive consumer verification.
