@@ -2,7 +2,7 @@
 
 The local runtime is PHP 8.5.10. The package gates include PHP syntax, exact reflected public API, source closure and dependency direction, PHPStan at maximum level, PSR-12 source style, behavior tests, executable examples, security audit, and an isolated archive consumer.
 
-The initial package suite exercises 85 assertions. Test input provenance and retained host tests are recorded in `resources/migration/test-ownership.json`. Current behavior tests use real dependency classes, with no stubs, aliases, copied dependency code in src, or host bootstrapping.
+The package suite exercises 95 assertions. Test input provenance and retained host tests are recorded in `resources/migration/test-ownership.json`. Current behavior tests use real dependency classes, with no stubs, aliases, copied dependency code in src, or host bootstrapping.
 
 `composer clean-consumer` archives the package and installs it into a fresh directory using Composer --no-dev --classmap-authoritative --no-scripts --no-plugins. It checks archive runtime/manifests, excludes development trees, rejects App/SDK classes from the classmap, and executes the installed example. It records archive SHA-256 and consumer evidence outside the repository. A fresh invocation rebuilds the current source.
 
@@ -11,3 +11,5 @@ For dependency development only, set `KUMWE_SOURCE_DEPENDENCIES` to a JSON objec
 The PHP 8.5 package gate installs the exact stable registry dependencies, audits them, checks the complete behavior/API/static suite, and installs a fresh no-dev archive consumer. Release transition and dependency identity fixtures run before publication. The shared release workflow reruns these checks on the actual default-branch commit, verifies upstream stable tags and Composer source references, and publishes the recorded version. Branch protection, optional GitHub immutability, and external attestations are not publication prerequisites; published artifact verification and App adoption remain separate.
 
 The dependency-readiness gate verifies that every production Kumwe requirement is an exact stable version and matches `resources/release-readiness.json`. Regression fixtures reject stale, missing, duplicate and non-exact coordinates. The record tracks attestation state explicitly; a null value supplies no independent artifact verification. Source consistency and external release verification remain separate observations.
+
+Run `composer governance:install` once before the source gate to install the exact locked development schema tooling. `composer governance` executes all three authoritative package schemas and the complete discriminated v2 handoff, source/API/documentation and ownership agreement, and 17 refusal fixtures. `composer docs` rejects source documentation drift; `composer docs:record` regenerates the complete callable, constant and property documentation. The schema tooling is excluded from production archives.

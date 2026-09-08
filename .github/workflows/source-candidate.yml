@@ -23,7 +23,9 @@ jobs:
           coverage: none
           tools: composer:v2
       - name: Install exact released dependencies and package tools
-        run: composer install --no-interaction --prefer-dist
+        run: |
+          composer install --no-interaction --prefer-dist
+          composer governance:install
       - name: Run complete package checks and isolated archive consumer
         run: composer check
       - name: Verify production-only installation and example
