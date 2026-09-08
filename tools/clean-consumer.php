@@ -57,6 +57,25 @@ require 'vendor/__PACKAGE__/examples/consumer.php';
 SMOKE;
 file_put_contents($temporary . '/smoke.php', str_replace('__PACKAGE__', $manifest['name'], $smoke));
 $run([PHP_BINARY, 'smoke.php'], $temporary);
+// Verify standalone CLI bootstrap as well as the supported preloaded consumer invocation.
+$run([PHP_BINARY, $installed . '/examples/consumer.php', $temporary . '/vendor/autoload.php'], $temporary);
+$invalid = proc_open(
+    [PHP_BINARY, $installed . '/examples/consumer.php', $temporary . '/missing-autoload.php'],
+    [STDIN, ['pipe', 'w'], ['pipe', 'w']],
+    $pipes,
+    $temporary,
+);
+if (!is_resource($invalid)) { throw new RuntimeException('Could not run invalid-autoload regression.'); }
+$invalidOutput = stream_get_contents($pipes[1]);
+$invalidError = stream_get_contents($pipes[2]);
+fclose($pipes[1]);
+fclose($pipes[2]);
+if (proc_close($invalid) === 0
+    || !str_contains($invalidOutput . $invalidError, 'Composer autoload file is missing or unreadable:')
+    || str_contains($invalidOutput, 'Money and unit provider declarations matched real conversion requests.')) {
+    throw new RuntimeException('Installed example did not refuse the missing explicit autoload path.');
+}
+echo "Installed example CLI bootstrap and missing-autoload refusal passed.\n";
 $evidence = ['kind' => $sourceDependencies === [] ? 'archive-with-registry-dependencies' : 'archive-with-local-source-dependencies', 'release_attestation' => false, 'archive_sha256' => hash_file('sha256', $archive), 'consumer_directory' => $temporary, 'dependencies' => $sourceRecords];
 file_put_contents($temporary . '/consumer-evidence.json', json_encode($evidence, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n");
 echo json_encode($evidence, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n";

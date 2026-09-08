@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.4
+
+- Run the shipped example directly from an installed package using an explicit consumer Composer autoload path.
+- Preserve checkout and preloaded usage; reject an unavailable explicitly supplied autoload file.
+- Exercise fresh-process installed example execution and missing-autoload refusal in the mandatory archive consumer gate.
+- Keep the two public definitions and exact Contribution 0.1.1 / Conversion 0.1.5 dependencies unchanged.
+
 ## 0.1.3
 
 - Adopt the published Conversion 0.1.5 metadata correction with unchanged Contribution 0.1.1.
