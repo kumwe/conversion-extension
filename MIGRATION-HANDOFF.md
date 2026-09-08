@@ -9,7 +9,7 @@ target:
   artifact_identity: "kumwe/conversion-extension"
   canonical_namespace_or_abi: "Kumwe\\Conversion\\Contribution"
   branch: "agent/align-conversion-readiness"
-  pull_request: null
+  pull_request: "https://github.com/kumwe/conversion-extension/pull/5"
 source:
   app:
     repository: "https://github.com/kumwe/app"
@@ -223,7 +223,7 @@ blockers:
 
 ## Migration/implementation summary
 
-The proposed 0.1.2 successor aligns the exact production dependency graph and its recorded readiness coordinates. It adds regression gates for stale, missing and non-exact dependency records and regenerates the governed release manifests. The previously released constructor bounds and registrar ownership remain covered by the package behavior suite. The changelog version describes the proposed artifact; it is not a publication observation.
+[PR #5](https://github.com/kumwe/conversion-extension/pull/5) contains the proposed 0.1.2 successor, which aligns the exact production dependency graph and its recorded readiness coordinates. It adds regression gates for stale, missing and non-exact dependency records and regenerates the governed release manifests. The previously released constructor bounds and registrar ownership remain covered by the package behavior suite. The changelog version describes the proposed artifact; it is not a publication observation.
 
 ## Public API and responsibility
 
