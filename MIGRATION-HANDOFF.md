@@ -8,8 +8,8 @@ target:
   repository: "https://github.com/kumwe/conversion-extension"
   artifact_identity: "kumwe/conversion-extension"
   canonical_namespace_or_abi: "Kumwe\\Conversion\\Contribution"
-  branch: "codex/extraction-readiness-20260907"
-  pull_request: "https://github.com/kumwe/conversion-extension/pull/4"
+  branch: "agent/align-conversion-readiness"
+  pull_request: null
 source:
   app:
     repository: "https://github.com/kumwe/app"
@@ -27,7 +27,7 @@ source:
   examined_dependencies:
     - "php ^8.5"
     - "kumwe/contribution 0.1.1"
-    - "kumwe/conversion 0.1.3"
+    - "kumwe/conversion 0.1.4"
   active_related_pull_requests: []
 framework_php:
   composer_package: "kumwe/conversion-extension"
@@ -112,13 +112,13 @@ ownership:
   public_manifests:
     -
       path: "resources/public-api/v1.json"
-      sha256: "6e216713eba7207e8d8f95e59a2bf8322caada005360eefaea55e37baf503ce4"
+      sha256: "76620c95691d3c59f83af326b251dfda78abf1676cc8a6cda7b55c2c79fb5261"
     -
       path: "resources/capabilities/v1.json"
-      sha256: "0f7ca11e3ae65449eacc781e1e7b0ac6c34bb73576aab9bfd5e3edd99d774799"
+      sha256: "e10490296c1e115238c76136a458da86e233acf46894a6883cb2312d8b47bf46"
     -
       path: "resources/service-map/v1.json"
-      sha256: "fc09fadbe366a7b1e8c415e557e02858893624b2b06ac34d3a961d82fccb14aa"
+      sha256: "98b5992ee4a3fada9303074e86bec859e2ff9def487e94389763bf6e5f016c31"
   intentionally_excluded:
     - "The two provider definition types are extracted. The former MoneyRateProviderRegistrar and UnitConversionProviderRegistrar were withdrawn before the reviewed App baseline; signed manifest declarations and ExtensionBindingRegistrar moneyRateProvider()/unitConversionProvider() in Extension SDK own registration. Conversion owns the provider interfaces and algorithms."
 native_cpp: null
@@ -143,7 +143,7 @@ documentation:
   integration_or_consumer: "docs/integration.md"
   examples:
     - "examples/consumer.php"
-  changelog_record: "CHANGELOG.md / 0.1.1"
+  changelog_record: "CHANGELOG.md / 0.1.2"
 release_expectations:
   version_policy: "Exact stable sibling package pins; preserve coherent released graphs until compatible successor releases exist."
   expected_artifact_types:
@@ -223,7 +223,7 @@ blockers:
 
 ## Migration/implementation summary
 
-Validate direct constructor lists as strictly as parsed input and document the current registrar ownership. [PR #4](https://github.com/kumwe/conversion-extension/pull/4) contains this successor. The changelog version describes the proposed artifact; it is not a publication observation.
+The proposed 0.1.2 successor aligns the exact production dependency graph and its recorded readiness coordinates. It adds regression gates for stale, missing and non-exact dependency records and regenerates the governed release manifests. The previously released constructor bounds and registrar ownership remain covered by the package behavior suite. The changelog version describes the proposed artifact; it is not a publication observation.
 
 ## Public API and responsibility
 
@@ -231,7 +231,7 @@ The two provider definition types are extracted. The former MoneyRateProviderReg
 
 ## Capability reuse/semantic input review
 
-The implementation consumes the exact canonical dependency contracts recorded in composer.json. Install the exact independently verified successor; run Composer resolution, archive consumer gates and affected App integration tests before namespace removal.
+The implementation consumes the exact canonical dependency contracts recorded in composer.json. resources/release-readiness.json records the same dependency versions and explicitly leaves independent attestations null. No source candidate aliases are configured. Install the exact independently verified successor; run Composer resolution, archive consumer gates and affected App integration tests before namespace removal.
 
 ## Consumer inventory
 
@@ -251,4 +251,4 @@ Reconcile the recorded source commit and per-file source digests with the curren
 
 ## Validation recipe and observed local results
 
-Run composer check with the documented PHP runtime and extensions. The review added and exercised the boundary regressions described in CHANGELOG.md. A final gate pass, remote CI status and immutable release verification are distinct observations; neither a proposed version nor this handoff attests publication. See docs/integration.md and the package check scripts for the exact archive and runtime recipe.
+Run composer check with the documented PHP runtime and extensions. The package behavior suite exercises 95 assertions using the real typed dependency classes. Dependency-readiness regression fixtures reject stale or incomplete coordinates, and the release parser, integrity, workflow and published dependency identity fixtures remain part of the complete gate. A final gate pass, remote CI status and immutable release verification are distinct observations; neither a proposed version nor this handoff attests publication. See docs/integration.md and the package check scripts for the exact archive and runtime recipe.

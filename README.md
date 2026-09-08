@@ -2,7 +2,7 @@
 
 `kumwe/conversion-extension` supplies two immutable contribution definitions under `Kumwe\Conversion\Contribution`: `MoneyRateProviderDefinition` and `UnitConversionProviderDefinition`. They connect Contribution declarations to canonical Conversion requests.
 
-PHP 8.5, `kumwe/contribution` 0.1.1, and `kumwe/conversion` 0.1.3 are the required dependency coordinates. The shared package gate installs these released versions and verifies a fresh archive consumer. A human merge triggers the same checks on the resulting default-branch commit and publishes the recorded version.
+PHP 8.5, `kumwe/contribution` 0.1.1, and `kumwe/conversion` 0.1.4 are the required dependency coordinates. The shared package gate installs these released versions and verifies a fresh archive consumer. A human merge triggers the same checks on the resulting default-branch commit and publishes the recorded version.
 
 ```php
 use Kumwe\Conversion\Contribution\MoneyRateProviderDefinition;

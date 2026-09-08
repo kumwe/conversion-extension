@@ -1,0 +1,14 @@
+{
+  "status": "review-ready",
+  "reason": "Exact production dependency coordinates are recorded for source consistency. Null attestations do not claim independent verification or package publication; verify immutable package and dependency artifacts before App adoption.",
+  "dependencies": {
+    "kumwe/contribution": {
+      "version": "0.1.1",
+      "attestation": null
+    },
+    "kumwe/conversion": {
+      "version": "0.1.4",
+      "attestation": null
+    }
+  }
+}
