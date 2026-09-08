@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+- Adopt the published Conversion 0.1.5 metadata correction with unchanged Contribution 0.1.1.
+- Enforce all three complete package schemas and the discriminated v2 handoff with locked tooling and refusal fixtures.
+- Generate the complete source API documentation and verify exported symbol ownership and handoff agreement.
+
 ## 0.1.2
 
 - Adopt exact published Conversion 0.1.4 alongside Contribution 0.1.1 and align the consumer handoff.
