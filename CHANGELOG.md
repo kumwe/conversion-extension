@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+- Adopt exact published Conversion 0.1.4 alongside Contribution 0.1.1 and align the consumer handoff.
+- Reject stale or incomplete dependency-readiness evidence in the complete package gate.
+- Regenerate the public API, capability and service manifests for this proposed release.
+
 ## 0.1.1
 
 - Enforce bounded list/string invariants consistently in direct provider constructors and manifest decoding.
