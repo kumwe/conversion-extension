@@ -1,229 +1,247 @@
 ---
-schema: "kumwe-migration-handoff/v2"
-artifact_kind: "framework_php"
-migration_id: "KUMWE-MIG-2026-028"
-change_set: "KUMWE-CS-2026-028"
-state: "draft_pr_open"
+schema: kumwe-migration-handoff/v2
+artifact_kind: framework_php
+migration_id: KUMWE-MIG-2026-028
+change_set: KUMWE-CS-2026-028
+state: draft_pr_open
 target:
-  repository: "https://github.com/kumwe/conversion-extension"
-  artifact_identity: "kumwe/conversion-extension"
-  canonical_namespace_or_abi: "Kumwe\\Conversion\\Contribution"
-  branch: "agent/align-conversion-readiness"
-  pull_request: "https://github.com/kumwe/conversion-extension/pull/5"
+  repository: https://github.com/kumwe/conversion-extension
+  artifact_identity: kumwe/conversion-extension
+  canonical_namespace_or_abi: Kumwe\Conversion\Contribution\
+  branch: agent/complete-governance-readiness
+  pull_request: https://github.com/kumwe/conversion-extension/pull/6
 source:
   app:
-    repository: "https://github.com/kumwe/app"
-    baseline_commit: "24ecf956423c18933e824b43cea1bfb9127a79a9"
+    repository: https://github.com/kumwe/app
+    baseline_commit: 24ecf956423c18933e824b43cea1bfb9127a79a9
     examined_paths:
-      - "src/BusinessRecord/Domain/MoneyRateProviderDefinition.php"
-      - "src/Extension/Contribution/UnitConversionProviderDefinition.php"
-      - "composer.json"
-      - "docs/architecture/capability-index.md"
+      - src/BusinessRecord/Domain/MoneyRateProviderDefinition.php
+      - src/Extension/Contribution/UnitConversionProviderDefinition.php
+      - composer.json
+      - docs/architecture/capability-index.md
     old_namespace_roots:
-      - "Kumwe\\App\\BusinessRecord\\Domain\\"
-      - "Kumwe\\App\\Extension\\Contribution\\"
-    capability_index_sha256: null
+      - Kumwe\App\BusinessRecord\Domain\
+      - Kumwe\App\Extension\Contribution\
+    capability_index_sha256: 8fb2a8680bed6ac1456183bc9e48fe040194923b6d1b3331f04cea28bd5a9b2f
   semantic_inputs: []
   examined_dependencies:
-    - "php ^8.5"
-    - "kumwe/contribution 0.1.1"
-    - "kumwe/conversion 0.1.4"
+    - php ^8.5
+    - kumwe/contribution 0.1.1
+    - kumwe/conversion 0.1.5
   active_related_pull_requests: []
 framework_php:
-  composer_package: "kumwe/conversion-extension"
-  canonical_namespace: "Kumwe\\Conversion\\Contribution"
-  public_api_manifest: "resources/public-api/v1.json"
-  capability_manifest: "resources/capabilities/v1.json"
-  service_map: "resources/service-map/v1.json"
+  composer_package: kumwe/conversion-extension
+  canonical_namespace: Kumwe\Conversion\Contribution\
+  public_api_manifest: resources/public-api/v1.json
+  capability_manifest: resources/capabilities/v1.json
+  service_map: resources/service-map/v1.json
   extracted_symbols:
-    -
-      old_fqcn: "Kumwe\\App\\BusinessRecord\\Domain\\MoneyRateProviderDefinition"
-      new_fqcn: "Kumwe\\Conversion\\Contribution\\MoneyRateProviderDefinition"
-      source_path: "src/BusinessRecord/Domain/MoneyRateProviderDefinition.php"
-      target_path: "src/MoneyRateProviderDefinition.php"
-      kind: "class"
+    - old_fqcn: Kumwe\App\BusinessRecord\Domain\MoneyRateProviderDefinition
+      new_fqcn: Kumwe\Conversion\Contribution\MoneyRateProviderDefinition
+      source_path: src/BusinessRecord/Domain/MoneyRateProviderDefinition.php
+      target_path: src/MoneyRateProviderDefinition.php
+      kind: class
       public_methods:
-        - "__construct"
-        - "fromArray"
-        - "identifier"
-        - "prices"
-        - "priority"
-        - "toArray"
+        - __construct
+        - fromArray
+        - identifier
+        - prices
+        - priority
+        - toArray
       public_properties:
-        - "currencies"
+        - currencies
       public_constants:
-        - "MAXIMUM_CURRENCIES"
-      exceptions: []
-      serialization_contract: "Explicit scalar projections documented in docs/public-api.md; PHP native serialization is not a durable wire or authority contract."
-      compatibility: "Portable behavior is retained under the canonical namespace. Package-owned boundary and regression tests document deliberate validation and scheduling corrections."
-    -
-      old_fqcn: "Kumwe\\App\\Extension\\Contribution\\UnitConversionProviderDefinition"
-      new_fqcn: "Kumwe\\Conversion\\Contribution\\UnitConversionProviderDefinition"
-      source_path: "src/Extension/Contribution/UnitConversionProviderDefinition.php"
-      target_path: "src/UnitConversionProviderDefinition.php"
-      kind: "class"
+        - MAXIMUM_CURRENCIES
+      exceptions:
+        - InvalidArgumentException
+      serialization_contract: Explicit scalar projections documented in docs/public-api.md; PHP native serialization
+        is not a durable wire or authority contract.
+      compatibility: Runtime behavior is unchanged in this metadata/dependency successor. Constructor and parsing
+        bounds are enforced equally; the host retains trusted provider admission.
+    - old_fqcn: Kumwe\App\Extension\Contribution\UnitConversionProviderDefinition
+      new_fqcn: Kumwe\Conversion\Contribution\UnitConversionProviderDefinition
+      source_path: src/Extension/Contribution/UnitConversionProviderDefinition.php
+      target_path: src/UnitConversionProviderDefinition.php
+      kind: class
       public_methods:
-        - "__construct"
-        - "fromArray"
-        - "identifier"
-        - "priority"
-        - "relates"
-        - "toArray"
+        - __construct
+        - fromArray
+        - identifier
+        - priority
+        - relates
+        - toArray
       public_properties:
-        - "units"
+        - units
       public_constants:
-        - "MAXIMUM_UNITS"
-      exceptions: []
-      serialization_contract: "Explicit scalar projections documented in docs/public-api.md; PHP native serialization is not a durable wire or authority contract."
-      compatibility: "Portable behavior is retained under the canonical namespace. Package-owned boundary and regression tests document deliberate validation and scheduling corrections."
+        - MAXIMUM_UNITS
+      exceptions:
+        - InvalidArgumentException
+      serialization_contract: Explicit scalar projections documented in docs/public-api.md; PHP native serialization
+        is not a durable wire or authority contract.
+      compatibility: Runtime behavior is unchanged in this metadata/dependency successor. Constructor and parsing
+        bounds are enforced equally; the host retains trusted provider admission.
   consumers:
     app_code:
-      - "src/BusinessRecord/Domain/MoneyRateProviderDefinition.php"
-      - "src/BusinessRecord/Infrastructure/RuntimeMoneyRateProviderCatalog.php"
-      - "src/BusinessRecord/Infrastructure/RuntimeUnitConversionProviderCatalog.php"
-      - "src/Extension/Contribution/CanonicalManifestInterpreter.php"
-      - "src/Extension/Contribution/UnitConversionProviderDefinition.php"
+      - src/BusinessRecord/Domain/MoneyRateProviderDefinition.php
+      - src/BusinessRecord/Infrastructure/RuntimeMoneyRateProviderCatalog.php
+      - src/BusinessRecord/Infrastructure/RuntimeUnitConversionProviderCatalog.php
+      - src/Extension/Contribution/CanonicalManifestInterpreter.php
+      - src/Extension/Contribution/UnitConversionProviderDefinition.php
     configuration_and_di: []
     reflection_and_string_references:
-      - "Recompute same-namespace, reflected and dynamically constructed names before App adoption; exact source inventory is evidence, not a complete dynamic reference proof."
+      - Recompute same-namespace, reflected and dynamically constructed names before App adoption; exact
+        source inventory is evidence, not a complete dynamic reference proof.
     fixtures_and_examples:
-      - "examples/consumer.php"
+      - examples/consumer.php
     external: []
   dependency_injection:
-    mode: "direct"
+    mode: direct
     provider: null
     factories: []
     aliases: []
     service_lifetimes: []
     configuration_keys: []
-    provider_absence_reason: "Immutable declarations and stateless helpers use direct construction; no injected runtime service is exported."
+    provider_absence_reason: Immutable declarations and stateless helpers use direct construction; no injected
+      runtime service is exported.
 ownership:
-  responsibility: "Portable immutable money-rate and unit-conversion provider declarations."
+  responsibility: Portable immutable money-rate and unit-conversion provider declarations.
   non_responsibilities:
-    - "Host trust and final authorization"
-    - "Persistence, durable transactions, worker and transport lifecycle"
-    - "App runtime adoption and native release publication"
+    - Host trust and final authorization
+    - Persistence, durable transactions, worker and transport lifecycle
+    - App runtime adoption and native release publication
   allowed_dependency_ceiling:
-    - "php"
-    - "kumwe/contribution"
-    - "kumwe/conversion"
-  implementation_owner: "kumwe/conversion-extension"
-  next_consumer: "kumwe/app"
+    - php
+    - kumwe/contribution
+    - kumwe/conversion
+  implementation_owner: kumwe/conversion-extension
+  next_consumer: kumwe/app
   public_manifests:
-    -
-      path: "resources/public-api/v1.json"
-      sha256: "76620c95691d3c59f83af326b251dfda78abf1676cc8a6cda7b55c2c79fb5261"
-    -
-      path: "resources/capabilities/v1.json"
-      sha256: "e10490296c1e115238c76136a458da86e233acf46894a6883cb2312d8b47bf46"
-    -
-      path: "resources/service-map/v1.json"
-      sha256: "98b5992ee4a3fada9303074e86bec859e2ff9def487e94389763bf6e5f016c31"
+    - path: resources/public-api/v1.json
+      sha256: 7b88951623c2c0455691baad72f28af391f55b852674dddd3686caa53eac9072
+    - path: resources/capabilities/v1.json
+      sha256: 273dcd50d87600702b2703640f4343205c0f60e50fadfa6b7ce2fac088e15949
+    - path: resources/service-map/v1.json
+      sha256: 665e14ebc06d55f5dc3abaa036ec68c1a3c8e84ef07c71d13cefacbb4ff091a6
   intentionally_excluded:
-    - "The two provider definition types are extracted. The former MoneyRateProviderRegistrar and UnitConversionProviderRegistrar were withdrawn before the reviewed App baseline; signed manifest declarations and ExtensionBindingRegistrar moneyRateProvider()/unitConversionProvider() in Extension SDK own registration. Conversion owns the provider interfaces and algorithms."
+    - The two provider definition types are extracted. The former MoneyRateProviderRegistrar and
+      UnitConversionProviderRegistrar were withdrawn before the reviewed App baseline; signed manifest
+      declarations and ExtensionBindingRegistrar moneyRateProvider()/unitConversionProvider() in Extension SDK
+      own registration. Conversion owns the provider interfaces and algorithms.
 native_cpp: null
 php_extension: null
 tests:
   moved_or_added:
-    - "tests/run.php"
+    - tests/run.php
+    - tools/governance/test.cjs
   remain_in_app_or_consumer:
-    - "tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php"
-    - "tests/Unit/BusinessRecord/Application/UnitConversionProviderContributionTest.php"
-    - "tests/Unit/Extension/Contribution/UnitConversionProviderDeclarationTest.php"
+    - tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php
+    - tests/Unit/BusinessRecord/Application/UnitConversionProviderContributionTest.php
+    - tests/Unit/Extension/Contribution/UnitConversionProviderDeclarationTest.php
   split_tests:
-    - "Remove only library implementation assertions after verified App adoption; retain host wiring and composed behavior assertions."
+    - Remove only library implementation assertions after verified App adoption; retain host wiring and
+      composed behavior assertions.
   prohibited_duplicates:
-    - "App must not retain unit tests of vendor-owned implementation internals after adoption."
+    - App must not retain unit tests of vendor-owned implementation internals after adoption.
   corpora: []
 documentation:
-  charter: "CHARTER.md"
-  readme: "README.md"
-  public_api: "docs/public-api.md"
-  architecture: "docs/architecture.md"
-  integration_or_consumer: "docs/integration.md"
+  charter: CHARTER.md
+  readme: README.md
+  public_api: docs/public-api.md
+  architecture: docs/architecture.md
+  integration_or_consumer: docs/integration.md
   examples:
-    - "examples/consumer.php"
-  changelog_record: "CHANGELOG.md / 0.1.2"
+    - examples/consumer.php
+  changelog_record: CHANGELOG.md / 0.1.3
 release_expectations:
-  version_policy: "Exact stable sibling package pins; preserve coherent released graphs until compatible successor releases exist."
+  version_policy: Exact stable sibling package pins; preserve coherent released graphs until compatible
+    successor releases exist.
   expected_artifact_types:
-    - "Composer package archive"
-    - "GitHub source archive"
+    - Composer package archive
+    - GitHub source archive
   required_checks:
-    - "composer check"
-    - "Final hosted package CI"
-    - "Machine handoff and consumer schema validation"
-  required_registry_or_installer: "Composer"
+    - composer check
+    - Final hosted package CI
+    - Machine handoff and consumer schema validation
+  required_registry_or_installer: Composer
   required_external_attestation: true
 next_task:
-  phase_name: "Review and verify the library successor release before separate App integration"
+  phase_name: Review and verify the library successor release before separate App integration
   permitted_only_when:
-    - "Final package CI passes at the proposed head"
-    - "Immutable package and all dependency releases are independently verified"
-    - "Reconcile current App drift against the recorded source inventories"
-  consumer_repository: "https://github.com/kumwe/app"
-  dependency_or_native_change: "Install the exact independently verified successor; run Composer resolution, archive consumer gates and affected App integration tests before namespace removal."
+    - Final package CI passes at the proposed head
+    - Immutable package and all dependency releases are independently verified
+    - Reconcile current App drift against the recorded source inventories
+  consumer_repository: https://github.com/kumwe/app
+  dependency_or_native_change: Install the exact independently verified successor; run Composer resolution,
+    archive consumer gates and affected App integration tests before namespace removal.
   namespace_or_api_replacements:
-    - "Kumwe\\App\\BusinessRecord\\Domain\\MoneyRateProviderDefinition -> Kumwe\\Conversion\\Contribution\\MoneyRateProviderDefinition"
-    - "Kumwe\\App\\Extension\\Contribution\\UnitConversionProviderDefinition -> Kumwe\\Conversion\\Contribution\\UnitConversionProviderDefinition"
+    - Kumwe\App\BusinessRecord\Domain\MoneyRateProviderDefinition ->
+      Kumwe\Conversion\Contribution\MoneyRateProviderDefinition
+    - Kumwe\App\Extension\Contribution\UnitConversionProviderDefinition ->
+      Kumwe\Conversion\Contribution\UnitConversionProviderDefinition
   files_to_update:
-    - "composer.json"
-    - "composer.lock"
-    - "src/BusinessRecord/Domain/MoneyRateProviderDefinition.php"
-    - "src/BusinessRecord/Infrastructure/RuntimeMoneyRateProviderCatalog.php"
-    - "src/BusinessRecord/Infrastructure/RuntimeUnitConversionProviderCatalog.php"
-    - "src/Extension/Contribution/CanonicalManifestInterpreter.php"
-    - "src/Extension/Contribution/UnitConversionProviderDefinition.php"
-    - "tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php"
-    - "tests/Unit/BusinessRecord/Application/UnitConversionProviderContributionTest.php"
-    - "tests/Unit/Extension/Contribution/UnitConversionProviderDeclarationTest.php"
+    - composer.json
+    - composer.lock
+    - src/BusinessRecord/Domain/MoneyRateProviderDefinition.php
+    - src/BusinessRecord/Infrastructure/RuntimeMoneyRateProviderCatalog.php
+    - src/BusinessRecord/Infrastructure/RuntimeUnitConversionProviderCatalog.php
+    - src/Extension/Contribution/CanonicalManifestInterpreter.php
+    - src/Extension/Contribution/UnitConversionProviderDefinition.php
+    - tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php
+    - tests/Unit/BusinessRecord/Application/UnitConversionProviderContributionTest.php
+    - tests/Unit/Extension/Contribution/UnitConversionProviderDeclarationTest.php
   files_to_remove:
-    - "src/BusinessRecord/Domain/MoneyRateProviderDefinition.php"
-    - "src/Extension/Contribution/UnitConversionProviderDefinition.php"
+    - src/BusinessRecord/Domain/MoneyRateProviderDefinition.php
+    - src/Extension/Contribution/UnitConversionProviderDefinition.php
   tests_to_remove:
-    - "Implementation-owned portions only, after the package behavior suite and App integration suite pass."
+    - Implementation-owned portions only, after the package behavior suite and App integration suite pass.
   tests_to_retain_or_add:
-    - "tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php"
-    - "tests/Unit/BusinessRecord/Application/UnitConversionProviderContributionTest.php"
-    - "tests/Unit/Extension/Contribution/UnitConversionProviderDeclarationTest.php"
+    - tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php
+    - tests/Unit/BusinessRecord/Application/UnitConversionProviderContributionTest.php
+    - tests/Unit/Extension/Contribution/UnitConversionProviderDeclarationTest.php
   di_or_provisioning_changes:
-    - "Use direct construction and supply canonical dependency values; no provider is required."
+    - Use direct construction and supply canonical dependency values; no provider is required.
   capability_index_changes:
-    - "Record ownership from the verified package capability and public API manifests."
+    - Record ownership from the verified package capability and public API manifests.
   changelog_and_evidence_changes:
-    - "Record exact source, package archive and dependency identities in the external release attestation and App integration ledger."
+    - Record exact source, package archive and dependency identities in the external release attestation and
+      App integration ledger.
   verification_commands:
-    - "composer check"
-    - "Affected App integration suites"
-    - "Complete App package governance gate"
+    - composer governance:install
+    - composer check
+    - Affected App integration suites
+    - Complete App package governance gate
 concurrency:
   likely_conflict_files:
-    - "App composer.json"
-    - "App composer.lock"
-    - "App provider configuration"
+    - App composer.json
+    - App composer.lock
+    - App provider configuration
   related_migrations: []
   ownership_conflicts: []
   integration_train: null
-  resolution_rule: "semantic-preservation"
+  resolution_rule: semantic-preservation
 governance:
-  roadmap_source_sha256: "a202155ef1a65f5ab293d4f8397ebf4ac430db7f1e877c776bbe7851e6fe18d8"
+  roadmap_source_sha256: a202155ef1a65f5ab293d4f8397ebf4ac430db7f1e877c776bbe7851e6fe18d8
   roadmap_refs: []
   non_roadmap_refs:
-    - "NRM-2026-028"
+    - NRM-2026-028
   completion_claim: false
 decisions:
-  - "Validate direct constructor lists as strictly as parsed input and document the current registrar ownership."
-  - "The two provider definition types are extracted. The former MoneyRateProviderRegistrar and UnitConversionProviderRegistrar were withdrawn before the reviewed App baseline; signed manifest declarations and ExtensionBindingRegistrar moneyRateProvider()/unitConversionProvider() in Extension SDK own registration. Conversion owns the provider interfaces and algorithms."
-  - "Library behavior tests are package-owned. App changes, releases and external attestations are separate tasks."
+  - Validate direct constructor lists as strictly as parsed input and document the current registrar ownership.
+  - The two provider definition types are extracted. The former MoneyRateProviderRegistrar and
+    UnitConversionProviderRegistrar were withdrawn before the reviewed App baseline; signed manifest
+    declarations and ExtensionBindingRegistrar moneyRateProvider()/unitConversionProvider() in Extension SDK
+    own registration. Conversion owns the provider interfaces and algorithms.
+  - Library behavior tests are package-owned. App changes, releases and external attestations are separate
+    tasks.
 blockers:
-  - "Independent successor release verification and the final package gate remain necessary before App adoption."
+  - Independent successor release verification and the final package gate remain necessary before App adoption.
 ---
 
 # conversion-extension implementation handoff
 
 ## Migration/implementation summary
 
-[PR #5](https://github.com/kumwe/conversion-extension/pull/5) contains the proposed 0.1.2 successor, which aligns the exact production dependency graph and its recorded readiness coordinates. It adds regression gates for stale, missing and non-exact dependency records and regenerates the governed release manifests. The previously released constructor bounds and registrar ownership remain covered by the package behavior suite. The changelog version describes the proposed artifact; it is not a publication observation.
+[PR #6](https://github.com/kumwe/conversion-extension/pull/6) proposes 0.1.3, adopting actual published Conversion 0.1.5 at b291f3a31314644fd88150dc9a9e911fe0617fe7 alongside unchanged Contribution 0.1.1. Full authoritative schema validation covers all three canonical package manifests and the discriminated v2 handoff; refusal fixtures and source-generated documentation enforce agreement. The previous Extension 0.1.2 was published at af8254fc3f10421e263fc36f7c5a12d0d6406a69. Runtime source and App integration are unchanged. Proposed successor publication and independent verification remain separate steps.
 
 ## Public API and responsibility
 
@@ -251,4 +269,4 @@ Reconcile the recorded source commit and per-file source digests with the curren
 
 ## Validation recipe and observed local results
 
-Run composer check with the documented PHP runtime and extensions. The package behavior suite exercises 95 assertions using the real typed dependency classes. Dependency-readiness regression fixtures reject stale or incomplete coordinates, and the release parser, integrity, workflow and published dependency identity fixtures remain part of the complete gate. A final gate pass, remote CI status and immutable release verification are distinct observations; neither a proposed version nor this handoff attests publication. See docs/integration.md and the package check scripts for the exact archive and runtime recipe.
+Run composer check with the documented PHP runtime and extensions. The published predecessor behavior suite exercises 95 assertions using the real typed dependency classes. The proposed successor repeats those checks with actual Conversion 0.1.5. Full schema validation and 17 malformed/inconsistent document fixtures are mandatory in composer check. Dependency-readiness regression fixtures reject stale or incomplete coordinates, and the release parser, integrity, workflow and published dependency identity fixtures remain part of the complete gate. A final gate pass, remote CI status and immutable release verification are distinct observations; neither a proposed version nor this handoff attests publication. See docs/integration.md and the package check scripts for the exact archive and runtime recipe.

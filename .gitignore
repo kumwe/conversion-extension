@@ -1,3 +1,4 @@
 /vendor/
 /composer.lock
 /.phpstan-cache/
+/tools/governance/node_modules
