@@ -8,7 +8,7 @@ target:
   repository: https://github.com/kumwe/conversion-extension
   artifact_identity: kumwe/conversion-extension
   canonical_namespace_or_abi: Kumwe\Conversion\Contribution\
-  branch: agent/complete-governance-readiness
+  branch: fix/installed-example-autoload
   pull_request: https://github.com/kumwe/conversion-extension/pull/6
 source:
   app:
@@ -117,11 +117,11 @@ ownership:
   next_consumer: kumwe/app
   public_manifests:
     - path: resources/public-api/v1.json
-      sha256: 7b88951623c2c0455691baad72f28af391f55b852674dddd3686caa53eac9072
+      sha256: 5520fe30fc1e99030849e14806396375daa18c53a42a17094248ba5cdd56fc97
     - path: resources/capabilities/v1.json
-      sha256: 273dcd50d87600702b2703640f4343205c0f60e50fadfa6b7ce2fac088e15949
+      sha256: 9bbd3bb0a65ac5f21668b5ed75125b0e6e8705b124bca8caf96c510aac73904b
     - path: resources/service-map/v1.json
-      sha256: 665e14ebc06d55f5dc3abaa036ec68c1a3c8e84ef07c71d13cefacbb4ff091a6
+      sha256: f07fea2bd537ec495a2538030d4c370c22f37ccac2c14e2d04a01d419f41cba4
   intentionally_excluded:
     - The two provider definition types are extracted. The former MoneyRateProviderRegistrar and
       UnitConversionProviderRegistrar were withdrawn before the reviewed App baseline; signed manifest
@@ -133,6 +133,7 @@ tests:
   moved_or_added:
     - tests/run.php
     - tools/governance/test.cjs
+    - tools/clean-consumer.php
   remain_in_app_or_consumer:
     - tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php
     - tests/Unit/BusinessRecord/Application/UnitConversionProviderContributionTest.php
@@ -151,7 +152,7 @@ documentation:
   integration_or_consumer: docs/integration.md
   examples:
     - examples/consumer.php
-  changelog_record: CHANGELOG.md / 0.1.3
+  changelog_record: CHANGELOG.md / 0.1.4
 release_expectations:
   version_policy: Exact stable sibling package pins; preserve coherent released graphs until compatible
     successor releases exist.
@@ -241,7 +242,7 @@ blockers:
 
 ## Migration/implementation summary
 
-[PR #6](https://github.com/kumwe/conversion-extension/pull/6) proposes 0.1.3, adopting actual published Conversion 0.1.5 at b291f3a31314644fd88150dc9a9e911fe0617fe7 alongside unchanged Contribution 0.1.1. Full authoritative schema validation covers all three canonical package manifests and the discriminated v2 handoff; refusal fixtures and source-generated documentation enforce agreement. The previous Extension 0.1.2 was published at af8254fc3f10421e263fc36f7c5a12d0d6406a69. Runtime source and App integration are unchanged. Proposed successor publication and independent verification remain separate steps.
+This 0.1.4 successor adds documented direct CLI execution of the shipped example from an installed package by accepting the actual consumer Composer autoload path. The source-checkout default and preloaded include remain supported. The mandatory archive gate now starts the installed script in a fresh process and verifies missing explicit autoload paths are refused. Published Extension 0.1.3 at 2336014c457a30547fc6f15be1859b080d9ea1e4 remains unchanged. Exact Conversion 0.1.5 and Contribution 0.1.1, the two public definitions, full authoritative schemas and App integration boundary remain unchanged. Proposed successor publication and independent verification remain separate steps.
 
 ## Public API and responsibility
 
@@ -269,4 +270,4 @@ Reconcile the recorded source commit and per-file source digests with the curren
 
 ## Validation recipe and observed local results
 
-Run composer check with the documented PHP runtime and extensions. The published predecessor behavior suite exercises 95 assertions using the real typed dependency classes. The proposed successor repeats those checks with actual Conversion 0.1.5. Full schema validation and 17 malformed/inconsistent document fixtures are mandatory in composer check. Dependency-readiness regression fixtures reject stale or incomplete coordinates, and the release parser, integrity, workflow and published dependency identity fixtures remain part of the complete gate. A final gate pass, remote CI status and immutable release verification are distinct observations; neither a proposed version nor this handoff attests publication. See docs/integration.md and the package check scripts for the exact archive and runtime recipe.
+Run composer check with the documented PHP runtime and extensions. The published predecessor behavior suite exercises 95 assertions using the real typed dependency classes. The proposed successor repeats those checks with actual Conversion 0.1.5 and tests installed-example bootstrap in a separate PHP process with the real consumer autoload file, plus missing-path refusal. Full schema validation and 17 malformed/inconsistent document fixtures are mandatory in composer check. Dependency-readiness regression fixtures reject stale or incomplete coordinates, and the release parser, integrity, workflow and published dependency identity fixtures remain part of the complete gate. A final gate pass, remote CI status and immutable release verification are distinct observations; neither a proposed version nor this handoff attests publication. See docs/integration.md and the package check scripts for the exact archive and runtime recipe.

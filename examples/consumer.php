@@ -12,7 +12,13 @@ use Kumwe\Conversion\Value\MoneyValue;
 use Kumwe\Conversion\Value\QuantityRoundingMode;
 use Kumwe\Conversion\Value\QuantityValue;
 
-if (!class_exists(MoneyRateProviderDefinition::class)) { require dirname(__DIR__) . '/vendor/autoload.php'; }
+$autoload = $argv[1] ?? dirname(__DIR__) . '/vendor/autoload.php';
+if (isset($argv[1]) || !class_exists(MoneyRateProviderDefinition::class)) {
+    if (!is_file($autoload) || !is_readable($autoload)) {
+        throw new RuntimeException('Composer autoload file is missing or unreadable: ' . $autoload);
+    }
+    require_once $autoload;
+}
 $money = new MoneyRateProviderDefinition('acme.rates.ecb', ['USD', 'EUR', 'USD'], 3);
 $units = new UnitConversionProviderDefinition('acme.units.trade', ['unit', 'case'], -2);
 $amount = ExactDecimal::fromString('2.00', 12, 2);
