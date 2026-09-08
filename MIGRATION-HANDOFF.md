@@ -9,7 +9,7 @@ target:
   artifact_identity: kumwe/conversion-extension
   canonical_namespace_or_abi: Kumwe\Conversion\Contribution\
   branch: fix/installed-example-autoload
-  pull_request: https://github.com/kumwe/conversion-extension/pull/6
+  pull_request: https://github.com/kumwe/conversion-extension/pull/7
 source:
   app:
     repository: https://github.com/kumwe/app
