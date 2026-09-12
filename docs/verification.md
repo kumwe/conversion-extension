@@ -1,8 +1,8 @@
 # Verification
 
-The local runtime is PHP 8.5.10. The package gates include PHP syntax, exact reflected public API, source closure and dependency direction, PHPStan at maximum level, PSR-12 source style, behavior tests, executable examples, security audit, and an isolated archive consumer.
+The supported runtime is PHP 8.5. The package gates include PHP syntax, exact reflected public API, source closure and dependency direction, PHPStan at maximum level, PSR-12 source style, behavior tests, executable examples, security audit, and an isolated archive consumer.
 
-The package suite exercises 95 assertions. Test input provenance and retained host tests are recorded in `resources/migration/test-ownership.json`. Current behavior tests use real dependency classes, with no stubs, aliases, copied dependency code in src, or host bootstrapping.
+Test input provenance and retained host tests are recorded in `resources/migration/test-ownership.json`. Current behavior tests use real dependency classes, with no stubs, aliases, copied dependency code in src, or host bootstrapping.
 
 `composer clean-consumer` archives the package and installs it into a fresh directory using Composer --no-dev --classmap-authoritative --no-scripts --no-plugins. It checks archive runtime/manifests, excludes development trees, rejects App/SDK classes from the classmap, executes the installed example after an authoritative preload, then launches the actual installed script in a fresh PHP process with the consumer’s absolute Composer autoload path. It also requires explicit missing-path refusal. It records archive SHA-256 and consumer evidence outside the repository. A fresh invocation rebuilds the current source.
 
@@ -12,4 +12,4 @@ The PHP 8.5 package gate installs the exact stable registry dependencies, audits
 
 The dependency-readiness gate verifies that every production Kumwe requirement is an exact stable version and matches `resources/release-readiness.json`. Regression fixtures reject stale, missing, duplicate and non-exact coordinates. The record tracks attestation state explicitly; a null value supplies no independent artifact verification. Source consistency and external release verification remain separate observations.
 
-Run `composer governance:install` once before the source gate to install the exact locked development schema tooling. `composer governance` executes all three authoritative package schemas and the complete discriminated v2 handoff, source/API/documentation and ownership agreement, and 17 refusal fixtures. `composer docs` rejects source documentation drift; `composer docs:record` regenerates the complete callable, constant and property documentation. The schema tooling is excluded from production archives.
+Run `composer governance:install` once before the source gate to install the exact locked development schema tooling. `composer governance` executes all three authoritative package schemas and the complete package release contract record, source/API/documentation and ownership agreement, and 17 refusal fixtures. `composer docs` rejects source documentation drift; `composer docs:record` regenerates the complete callable, constant and property documentation. The schema tooling is excluded from production archives.
