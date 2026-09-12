@@ -6,4 +6,4 @@ MoneyRateProviderDefinition and UnitConversionProviderDefinition implement the c
 
 The two immutable provider definitions are this package’s complete current responsibility. Runtime binding uses the existing SDK SPI; this library does not create a second registry or provider container. Service/provider lists remain empty because these values have no injected runtime collaborators.
 
-The production token guard permits only the documented dependency namespaces and rejects host/native/container loading. The source map records exact source commits, paths, source digests, new symbols, target paths, and current target digests. Consumer inventory records file-level migration references without modifying App.
+The production token guard permits only the documented dependency namespaces and rejects host/native/container loading. The source map records exact source commits, paths, source digests, new symbols, target paths, and current target digests. Consumer inventory preserves source provenance and known host integration paths.

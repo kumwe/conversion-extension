@@ -21,5 +21,5 @@
     "tests/Unit/BusinessRecord/Application/MoneyRateProviderContributionTest.php",
     "tests/Unit/BusinessRecord/Application/UnitConversionProviderContributionTest.php"
   ],
-  "phase_2_note": "App is unchanged during Phase 1. Separate portable implementation assertions from mixed host tests and remove only those assertions after verified package adoption. Registry lifecycle and graphical parity portions remain host tests."
+  "host_boundary_note": "Core retains signed-manifest ownership, runtime binding, provider selection, trusted activation and lifecycle checks. Portable definition behavior belongs to package tests."
 }

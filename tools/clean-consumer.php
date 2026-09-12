@@ -37,7 +37,7 @@ $consumer = ['name' => 'kumwe/isolated-consumer', 'require' => $require, 'reposi
 file_put_contents($temporary . '/composer.json', json_encode($consumer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n");
 $run(['composer', 'install', '--no-dev', '--classmap-authoritative', '--no-scripts', '--no-plugins', '--no-interaction'], $temporary);
 $installed = $temporary . '/vendor/' . $manifest['name'];
-foreach (['src', 'resources/public-api/v1.json', 'resources/capabilities/v1.json', 'resources/service-map/v1.json', 'resources/migration/source-map.json', 'examples/consumer.php'] as $path) {
+foreach (['src', 'resources/public-api/v1.json', 'resources/capabilities/v1.json', 'resources/service-map/v1.json', 'resources/migration/source-map.json', 'docs/release-record.md', 'examples/consumer.php'] as $path) {
     if (!file_exists($installed . '/' . $path)) { throw new RuntimeException('Archive missing ' . $path); }
 }
 foreach (['tests', 'tools', 'vendor', '.git'] as $path) {

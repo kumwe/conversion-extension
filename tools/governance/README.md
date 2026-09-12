@@ -1,9 +1,19 @@
 # Authoritative governance validation
 
-`composer governance:install` installs the exact locked development dependencies. `composer governance` runs full draft-2020-12 JSON Schema validation of the public API, capabilities, service map and complete discriminated migration handoff, then checks source, generated documentation, symbol ownership and manifest digests. The normal `composer check` and hosted source/archive gate require it. This development tooling and its dependencies are excluded from production archives.
+`composer governance:install` installs exact locked development dependencies. `composer governance` runs full
+Draft 2020-12 JSON Schema validation of the public API, capabilities, service map and package release record, then checks
+source, generated documentation, symbol ownership and manifest digests. Both `composer check` and the hosted source and
+archive gates require it. This development tooling and its dependencies are excluded from production archives.
 
-The four schema snapshots are byte-for-byte copies of `kumwe/app` at `55bd9d22ed8846e5ad88b49fb77117a09f93fb76`, under `docs/architecture/governance/schemas/`. They are validation inputs, not package-owned schema forks. A future governance change must review the authoritative upstream snapshot before replacement.
+The three public manifest schema snapshots come from `kumwe/app` at
+`55bd9d22ed8846e5ad88b49fb77117a09f93fb76`, under `docs/architecture/governance/schemas/`.
+The package release record uses the coordinated Core and Extension SDK `kumwe-package-release-record/v1` schema.
+These are validation inputs, not package-owned schema forks. Review authoritative upstream changes before updating them.
 
-`test.cjs` validates a real positive document set and independently mutates in-memory copies. Its refusals cover the actual invalid shapes found in the cross-repository metadata audit and missing, duplicate or stale cross-file ownership evidence. It never rewrites production artifacts to run a negative fixture.
+`test.cjs` validates a real positive document set and independently mutates in-memory copies. Its refusals cover malformed
+schema shapes, obsolete workflow state, false Core completion claims, and missing, duplicate or stale ownership evidence.
+It never rewrites production artifacts to run a negative fixture.
 
-For an intentional public source change, run `composer api:record` and `composer docs:record`. The API command also regenerates the capability/service documents from the reviewed source. Review and update the handoff symbol mapping and SHA-256 identities before running the complete gate. Version headings describe proposed releases until immutable publication is actually observed externally.
+For an intentional public source change, run `composer api:record` and `composer docs:record`. The API command also
+regenerates capability and service documents from reviewed source. Update the release record's symbol mappings and SHA-256
+identities before running the complete gate. Confirm publication using immutable external release evidence.

@@ -1,18 +1,19 @@
-# conversion-extension ownership charter
+# Conversion Extension ownership charter
 
-Change set: KUMWE-CS-2026-028. Migration: KUMWE-MIG-2026-028.
-Non-roadmap reference: NRM-2026-028; extraction is an enabling refactor.
+Conversion Extension owns typed money-rate and unit-conversion provider contribution declarations under
+`Kumwe\Conversion\Contribution`.
 
-## Responsibility
+## Host and dependency responsibilities
 
-Typed money-rate and unit-conversion provider contribution declarations under the canonical namespace `Kumwe\Conversion\Contribution`.
+Conversion algorithms, rate data, unit catalogues, native PHP bindings, provider selection and trusted
+activation remain outside this package. Production package code never imports Kumwe App.
 
-## Retained host responsibilities
+## Package contract
 
-Conversion algorithms, rate data, unit catalogues, native PHP bindings, provider selection, and trusted activation remain outside this package. Production code never imports Kumwe App.
+The package owns portable behavior and boundary tests, API manifests, archive verification and consumer
+examples. [The release contract record](docs/release-record.md) preserves source provenance, symbol mappings,
+compatibility requirements and independent verification obligations.
 
-## Delivery boundary
-
-This branch owns Phase 1 package implementation and its behavior, boundary, conformance, public API, archive, and consumer tests. The source closure and exact old-to-new mapping are recorded in the migration handoff. App remains unchanged until separately verified immutable releases permit adoption. Dependencies that have not passed independent release verification are explicit publication blockers.
-
-Package publication and consumer adoption require the reviewed release protocol; this branch does not merge, tag, or publish artifacts. Each portable symbol has one eventual canonical owner. Namespace aliases, copied vendor implementations, and silent runtime fallbacks are prohibited.
+Consumers use independently verified immutable releases and retain host binding and lifecycle checks
+when changing an exact package pin. Each portable symbol has one canonical owner. Namespace aliases,
+copied vendor implementations, duplicate registrars and silent runtime fallbacks are prohibited.
